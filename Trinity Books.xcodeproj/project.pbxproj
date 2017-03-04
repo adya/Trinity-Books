@@ -15,6 +15,18 @@
 		0086CD4A1E6AB20700BF054E /* Trinity_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */; };
 		00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */; };
 		00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3461E6B559D0032E0E9 /* CartViewController.swift */; };
+		00FAF3541E6B59F10032E0E9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF3521E6B59F10032E0E9 /* MessageCell.xib */; };
+		00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3551E6B5A000032E0E9 /* MessageCell.swift */; };
+		00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3571E6B5A110032E0E9 /* LoadingCell.swift */; };
+		00FAF35B1E6B5A1F0032E0E9 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF3591E6B5A1F0032E0E9 /* LoadingCell.xib */; };
+		00FAF3601E6B5A3C0032E0E9 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF35E1E6B5A3C0032E0E9 /* BookCell.xib */; };
+		00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3611E6B5A4F0032E0E9 /* BookCell.swift */; };
+		00FAF3901E6B5AE40032E0E9 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */; };
+		00FAF3911E6B5AE40032E0E9 /* TSArchitectureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */; };
+		00FAF3921E6B5AE40032E0E9 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3871E6B5AE40032E0E9 /* Injector.swift */; };
+		00FAF3931E6B5AE40032E0E9 /* TSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3891E6B5AE40032E0E9 /* TSButton.swift */; };
+		00FAF3951E6B5AE40032E0E9 /* TSCollectionsViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */; };
+		00FAF3991E6B5AE40032E0E9 /* TSViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +61,18 @@
 		0086CD4B1E6AB20700BF054E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		00FAF3461E6B559D0032E0E9 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		00FAF3531E6B59F10032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/MessageCell.xib"; sourceTree = SOURCE_ROOT; };
+		00FAF3551E6B5A000032E0E9 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		00FAF3571E6B5A110032E0E9 /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		00FAF35A1E6B5A1F0032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/LoadingCell.xib"; sourceTree = SOURCE_ROOT; };
+		00FAF35F1E6B5A3C0032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/BookCell.xib"; sourceTree = SOURCE_ROOT; };
+		00FAF3611E6B5A4F0032E0E9 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSArchitectureBase.swift; sourceTree = "<group>"; };
+		00FAF3871E6B5AE40032E0E9 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		00FAF3891E6B5AE40032E0E9 /* TSButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSButton.swift; sourceTree = "<group>"; };
+		00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSCollectionsViewEx.swift; sourceTree = "<group>"; };
+		00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +103,7 @@
 		0086CD1B1E6AB20600BF054E = {
 			isa = PBXGroup;
 			children = (
+				00FAF3821E6B5AE40032E0E9 /* TSKit */,
 				0086CD261E6AB20600BF054E /* Trinity Books */,
 				0086CD3D1E6AB20700BF054E /* Trinity BooksTests */,
 				0086CD481E6AB20700BF054E /* Trinity BooksUITests */,
@@ -102,11 +127,9 @@
 				00FAF3411E6B559D0032E0E9 /* Data Managers Layer */,
 				00FAF3421E6B559D0032E0E9 /* Injection */,
 				00FAF3431E6B559D0032E0E9 /* Models */,
-				00FAF3441E6B559D0032E0E9 /* View Controllers */,
 				00FAF3471E6B559D0032E0E9 /* View Models */,
-				00FAF3481E6B559D0032E0E9 /* Views */,
+				00FAF34B1E6B59980032E0E9 /* UI */,
 				0086CD271E6AB20600BF054E /* AppDelegate.swift */,
-				0086CD2D1E6AB20600BF054E /* Main.storyboard */,
 				0086CD301E6AB20600BF054E /* Assets.xcassets */,
 				0086CD321E6AB20600BF054E /* LaunchScreen.storyboard */,
 				0086CD351E6AB20600BF054E /* Info.plist */,
@@ -172,8 +195,61 @@
 		00FAF3481E6B559D0032E0E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF3521E6B59F10032E0E9 /* MessageCell.xib */,
+				00FAF3551E6B5A000032E0E9 /* MessageCell.swift */,
+				00FAF3591E6B5A1F0032E0E9 /* LoadingCell.xib */,
+				00FAF3571E6B5A110032E0E9 /* LoadingCell.swift */,
+				00FAF35E1E6B5A3C0032E0E9 /* BookCell.xib */,
+				00FAF3611E6B5A4F0032E0E9 /* BookCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		00FAF34B1E6B59980032E0E9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0086CD2D1E6AB20600BF054E /* Main.storyboard */,
+				00FAF3481E6B559D0032E0E9 /* Views */,
+				00FAF3441E6B559D0032E0E9 /* View Controllers */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		00FAF3821E6B5AE40032E0E9 /* TSKit */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3831E6B5AE40032E0E9 /* TSArchitecture */,
+				00FAF3861E6B5AE40032E0E9 /* TSInjection */,
+				00FAF3881E6B5AE40032E0E9 /* TSUI */,
+			);
+			path = TSKit;
+			sourceTree = "<group>";
+		};
+		00FAF3831E6B5AE40032E0E9 /* TSArchitecture */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */,
+				00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */,
+			);
+			path = TSArchitecture;
+			sourceTree = "<group>";
+		};
+		00FAF3861E6B5AE40032E0E9 /* TSInjection */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3871E6B5AE40032E0E9 /* Injector.swift */,
+			);
+			path = TSInjection;
+			sourceTree = "<group>";
+		};
+		00FAF3881E6B5AE40032E0E9 /* TSUI */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3891E6B5AE40032E0E9 /* TSButton.swift */,
+				00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */,
+				00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */,
+			);
+			path = TSUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +321,7 @@
 					0086CD231E6AB20600BF054E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = P2NBF8K2F9;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					0086CD391E6AB20700BF054E = {
@@ -287,7 +364,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0086CD341E6AB20600BF054E /* LaunchScreen.storyboard in Resources */,
+				00FAF3541E6B59F10032E0E9 /* MessageCell.xib in Resources */,
+				00FAF3601E6B5A3C0032E0E9 /* BookCell.xib in Resources */,
 				0086CD311E6AB20600BF054E /* Assets.xcassets in Resources */,
+				00FAF35B1E6B5A1F0032E0E9 /* LoadingCell.xib in Resources */,
 				0086CD2F1E6AB20600BF054E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,9 +393,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00FAF3911E6B5AE40032E0E9 /* TSArchitectureBase.swift in Sources */,
+				00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */,
 				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
+				00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */,
+				00FAF3921E6B5AE40032E0E9 /* Injector.swift in Sources */,
+				00FAF3951E6B5AE40032E0E9 /* TSCollectionsViewEx.swift in Sources */,
+				00FAF3991E6B5AE40032E0E9 /* TSViewEx.swift in Sources */,
 				00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */,
+				00FAF3931E6B5AE40032E0E9 /* TSButton.swift in Sources */,
+				00FAF3901E6B5AE40032E0E9 /* Identifiable.swift in Sources */,
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
+				00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +454,30 @@
 				0086CD331E6AB20600BF054E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		00FAF3521E6B59F10032E0E9 /* MessageCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FAF3531E6B59F10032E0E9 /* Base */,
+			);
+			name = MessageCell.xib;
+			sourceTree = "<group>";
+		};
+		00FAF3591E6B5A1F0032E0E9 /* LoadingCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FAF35A1E6B5A1F0032E0E9 /* Base */,
+			);
+			name = LoadingCell.xib;
+			sourceTree = "<group>";
+		};
+		00FAF35E1E6B5A3C0032E0E9 /* BookCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FAF35F1E6B5A3C0032E0E9 /* Base */,
+			);
+			name = BookCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
