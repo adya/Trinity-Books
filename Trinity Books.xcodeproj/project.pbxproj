@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD271E6AB20600BF054E /* AppDelegate.swift */; };
-		0086CD2A1E6AB20600BF054E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD291E6AB20600BF054E /* FirstViewController.swift */; };
-		0086CD2C1E6AB20600BF054E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD2B1E6AB20600BF054E /* SecondViewController.swift */; };
 		0086CD2F1E6AB20600BF054E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0086CD2D1E6AB20600BF054E /* Main.storyboard */; };
 		0086CD311E6AB20600BF054E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0086CD301E6AB20600BF054E /* Assets.xcassets */; };
 		0086CD341E6AB20600BF054E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0086CD321E6AB20600BF054E /* LaunchScreen.storyboard */; };
 		0086CD3F1E6AB20700BF054E /* Trinity_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD3E1E6AB20700BF054E /* Trinity_BooksTests.swift */; };
 		0086CD4A1E6AB20700BF054E /* Trinity_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */; };
+		00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */; };
+		00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3461E6B559D0032E0E9 /* CartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +37,6 @@
 /* Begin PBXFileReference section */
 		0086CD241E6AB20600BF054E /* Trinity Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trinity Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0086CD271E6AB20600BF054E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0086CD291E6AB20600BF054E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		0086CD2B1E6AB20600BF054E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		0086CD2E1E6AB20600BF054E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0086CD301E6AB20600BF054E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0086CD331E6AB20600BF054E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		0086CD451E6AB20700BF054E /* Trinity BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trinity BooksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trinity_BooksUITests.swift; sourceTree = "<group>"; };
 		0086CD4B1E6AB20700BF054E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		00FAF3461E6B559D0032E0E9 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,13 @@
 		0086CD261E6AB20600BF054E /* Trinity Books */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF3411E6B559D0032E0E9 /* Data Managers Layer */,
+				00FAF3421E6B559D0032E0E9 /* Injection */,
+				00FAF3431E6B559D0032E0E9 /* Models */,
+				00FAF3441E6B559D0032E0E9 /* View Controllers */,
+				00FAF3471E6B559D0032E0E9 /* View Models */,
+				00FAF3481E6B559D0032E0E9 /* Views */,
 				0086CD271E6AB20600BF054E /* AppDelegate.swift */,
-				0086CD291E6AB20600BF054E /* FirstViewController.swift */,
-				0086CD2B1E6AB20600BF054E /* SecondViewController.swift */,
 				0086CD2D1E6AB20600BF054E /* Main.storyboard */,
 				0086CD301E6AB20600BF054E /* Assets.xcassets */,
 				0086CD321E6AB20600BF054E /* LaunchScreen.storyboard */,
@@ -126,6 +130,50 @@
 				0086CD4B1E6AB20700BF054E /* Info.plist */,
 			);
 			path = "Trinity BooksUITests";
+			sourceTree = "<group>";
+		};
+		00FAF3411E6B559D0032E0E9 /* Data Managers Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Managers Layer";
+			sourceTree = "<group>";
+		};
+		00FAF3421E6B559D0032E0E9 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Injection;
+			sourceTree = "<group>";
+		};
+		00FAF3431E6B559D0032E0E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		00FAF3441E6B559D0032E0E9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */,
+				00FAF3461E6B559D0032E0E9 /* CartViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		00FAF3471E6B559D0032E0E9 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		00FAF3481E6B559D0032E0E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0086CD2C1E6AB20600BF054E /* SecondViewController.swift in Sources */,
+				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
+				00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */,
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
-				0086CD2A1E6AB20600BF054E /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,8 +469,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P2NBF8K2F9;
 				INFOPLIST_FILE = "Trinity Books/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adya.Trinity-Books";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adya.trinitybooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -434,8 +483,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P2NBF8K2F9;
 				INFOPLIST_FILE = "Trinity Books/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adya.Trinity-Books";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adya.trinitybooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -518,6 +568,7 @@
 				0086CD501E6AB20700BF054E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0086CD511E6AB20700BF054E /* Build configuration list for PBXNativeTarget "Trinity BooksTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +577,7 @@
 				0086CD531E6AB20700BF054E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0086CD541E6AB20700BF054E /* Build configuration list for PBXNativeTarget "Trinity BooksUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +586,7 @@
 				0086CD561E6AB20700BF054E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
