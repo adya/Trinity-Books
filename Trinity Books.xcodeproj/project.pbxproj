@@ -21,12 +21,20 @@
 		00FAF35B1E6B5A1F0032E0E9 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF3591E6B5A1F0032E0E9 /* LoadingCell.xib */; };
 		00FAF3601E6B5A3C0032E0E9 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF35E1E6B5A3C0032E0E9 /* BookCell.xib */; };
 		00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3611E6B5A4F0032E0E9 /* BookCell.swift */; };
-		00FAF3901E6B5AE40032E0E9 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */; };
-		00FAF3911E6B5AE40032E0E9 /* TSArchitectureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */; };
-		00FAF3921E6B5AE40032E0E9 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3871E6B5AE40032E0E9 /* Injector.swift */; };
-		00FAF3931E6B5AE40032E0E9 /* TSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3891E6B5AE40032E0E9 /* TSButton.swift */; };
-		00FAF3951E6B5AE40032E0E9 /* TSCollectionsViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */; };
-		00FAF3991E6B5AE40032E0E9 /* TSViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */; };
+		00FAF39B1E6B5D480032E0E9 /* AnyBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF39A1E6B5D480032E0E9 /* AnyBooksViewModel.swift */; };
+		00FAF39D1E6B5D770032E0E9 /* AnyBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF39C1E6B5D760032E0E9 /* AnyBookViewModel.swift */; };
+		00FAF39F1E6B5DD10032E0E9 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF39E1E6B5DD10032E0E9 /* Book.swift */; };
+		00FAF3A11E6B60960032E0E9 /* CommonInjectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3A01E6B60960032E0E9 /* CommonInjectionPreset.swift */; };
+		00FAF3A51E6B61490032E0E9 /* DummyBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3A41E6B61490032E0E9 /* DummyBookViewModel.swift */; };
+		00FAF3A71E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3A61E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift */; };
+		00FAF3A91E6B64A50032E0E9 /* DummyInjectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */; };
+		00FAF3AB1E6B65920032E0E9 /* DummyBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3AA1E6B65920032E0E9 /* DummyBooksViewModel.swift */; };
+		00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3AE1E6B665E0032E0E9 /* Identifiable.swift */; };
+		00FAF3B71E6B665E0032E0E9 /* TSArchitectureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3AF1E6B665E0032E0E9 /* TSArchitectureBase.swift */; };
+		00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3B11E6B665E0032E0E9 /* Injector.swift */; };
+		00FAF3B91E6B665E0032E0E9 /* TSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3B31E6B665E0032E0E9 /* TSButton.swift */; };
+		00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3B41E6B665E0032E0E9 /* TSCollectionsViewEx.swift */; };
+		00FAF3BB1E6B665E0032E0E9 /* TSViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3B51E6B665E0032E0E9 /* TSViewEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +75,20 @@
 		00FAF35A1E6B5A1F0032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/LoadingCell.xib"; sourceTree = SOURCE_ROOT; };
 		00FAF35F1E6B5A3C0032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/BookCell.xib"; sourceTree = SOURCE_ROOT; };
 		00FAF3611E6B5A4F0032E0E9 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
-		00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSArchitectureBase.swift; sourceTree = "<group>"; };
-		00FAF3871E6B5AE40032E0E9 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
-		00FAF3891E6B5AE40032E0E9 /* TSButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSButton.swift; sourceTree = "<group>"; };
-		00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSCollectionsViewEx.swift; sourceTree = "<group>"; };
-		00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewEx.swift; sourceTree = "<group>"; };
+		00FAF39A1E6B5D480032E0E9 /* AnyBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnyBooksViewModel.swift; path = "View Models/AnyBooksViewModel.swift"; sourceTree = "<group>"; };
+		00FAF39C1E6B5D760032E0E9 /* AnyBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnyBookViewModel.swift; path = "View Models/AnyBookViewModel.swift"; sourceTree = "<group>"; };
+		00FAF39E1E6B5DD10032E0E9 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		00FAF3A01E6B60960032E0E9 /* CommonInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonInjectionPreset.swift; sourceTree = "<group>"; };
+		00FAF3A41E6B61490032E0E9 /* DummyBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBookViewModel.swift; sourceTree = "<group>"; };
+		00FAF3A61E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMessageCellDataSource.swift; sourceTree = "<group>"; };
+		00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyInjectionPreset.swift; sourceTree = "<group>"; };
+		00FAF3AA1E6B65920032E0E9 /* DummyBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBooksViewModel.swift; sourceTree = "<group>"; };
+		00FAF3AE1E6B665E0032E0E9 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		00FAF3AF1E6B665E0032E0E9 /* TSArchitectureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSArchitectureBase.swift; sourceTree = "<group>"; };
+		00FAF3B11E6B665E0032E0E9 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		00FAF3B31E6B665E0032E0E9 /* TSButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSButton.swift; sourceTree = "<group>"; };
+		00FAF3B41E6B665E0032E0E9 /* TSCollectionsViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSCollectionsViewEx.swift; sourceTree = "<group>"; };
+		00FAF3B51E6B665E0032E0E9 /* TSViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +119,7 @@
 		0086CD1B1E6AB20600BF054E = {
 			isa = PBXGroup;
 			children = (
-				00FAF3821E6B5AE40032E0E9 /* TSKit */,
+				00FAF3AC1E6B665E0032E0E9 /* TSKit */,
 				0086CD261E6AB20600BF054E /* Trinity Books */,
 				0086CD3D1E6AB20700BF054E /* Trinity BooksTests */,
 				0086CD481E6AB20700BF054E /* Trinity BooksUITests */,
@@ -165,6 +181,8 @@
 		00FAF3421E6B559D0032E0E9 /* Injection */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF3A01E6B60960032E0E9 /* CommonInjectionPreset.swift */,
+				00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */,
 			);
 			path = Injection;
 			sourceTree = "<group>";
@@ -172,6 +190,7 @@
 		00FAF3431E6B559D0032E0E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF39E1E6B5DD10032E0E9 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +207,9 @@
 		00FAF3471E6B559D0032E0E9 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF3A31E6B61310032E0E9 /* Dummies */,
+				00FAF3A21E6B61110032E0E9 /* Definitions */,
+				00FAF3A61E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -215,39 +237,58 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		00FAF3821E6B5AE40032E0E9 /* TSKit */ = {
+		00FAF3A21E6B61110032E0E9 /* Definitions */ = {
 			isa = PBXGroup;
 			children = (
-				00FAF3831E6B5AE40032E0E9 /* TSArchitecture */,
-				00FAF3861E6B5AE40032E0E9 /* TSInjection */,
-				00FAF3881E6B5AE40032E0E9 /* TSUI */,
+				00FAF39A1E6B5D480032E0E9 /* AnyBooksViewModel.swift */,
+				00FAF39C1E6B5D760032E0E9 /* AnyBookViewModel.swift */,
+			);
+			name = Definitions;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		00FAF3A31E6B61310032E0E9 /* Dummies */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3A41E6B61490032E0E9 /* DummyBookViewModel.swift */,
+				00FAF3AA1E6B65920032E0E9 /* DummyBooksViewModel.swift */,
+			);
+			name = Dummies;
+			sourceTree = "<group>";
+		};
+		00FAF3AC1E6B665E0032E0E9 /* TSKit */ = {
+			isa = PBXGroup;
+			children = (
+				00FAF3AD1E6B665E0032E0E9 /* TSArchitecture */,
+				00FAF3B01E6B665E0032E0E9 /* TSInjection */,
+				00FAF3B21E6B665E0032E0E9 /* TSUI */,
 			);
 			path = TSKit;
 			sourceTree = "<group>";
 		};
-		00FAF3831E6B5AE40032E0E9 /* TSArchitecture */ = {
+		00FAF3AD1E6B665E0032E0E9 /* TSArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				00FAF3841E6B5AE40032E0E9 /* Identifiable.swift */,
-				00FAF3851E6B5AE40032E0E9 /* TSArchitectureBase.swift */,
+				00FAF3AE1E6B665E0032E0E9 /* Identifiable.swift */,
+				00FAF3AF1E6B665E0032E0E9 /* TSArchitectureBase.swift */,
 			);
 			path = TSArchitecture;
 			sourceTree = "<group>";
 		};
-		00FAF3861E6B5AE40032E0E9 /* TSInjection */ = {
+		00FAF3B01E6B665E0032E0E9 /* TSInjection */ = {
 			isa = PBXGroup;
 			children = (
-				00FAF3871E6B5AE40032E0E9 /* Injector.swift */,
+				00FAF3B11E6B665E0032E0E9 /* Injector.swift */,
 			);
 			path = TSInjection;
 			sourceTree = "<group>";
 		};
-		00FAF3881E6B5AE40032E0E9 /* TSUI */ = {
+		00FAF3B21E6B665E0032E0E9 /* TSUI */ = {
 			isa = PBXGroup;
 			children = (
-				00FAF3891E6B5AE40032E0E9 /* TSButton.swift */,
-				00FAF38B1E6B5AE40032E0E9 /* TSCollectionsViewEx.swift */,
-				00FAF38F1E6B5AE40032E0E9 /* TSViewEx.swift */,
+				00FAF3B31E6B665E0032E0E9 /* TSButton.swift */,
+				00FAF3B41E6B665E0032E0E9 /* TSCollectionsViewEx.swift */,
+				00FAF3B51E6B665E0032E0E9 /* TSViewEx.swift */,
 			);
 			path = TSUI;
 			sourceTree = "<group>";
@@ -393,17 +434,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00FAF3911E6B5AE40032E0E9 /* TSArchitectureBase.swift in Sources */,
+				00FAF3A51E6B61490032E0E9 /* DummyBookViewModel.swift in Sources */,
 				00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */,
+				00FAF3B91E6B665E0032E0E9 /* TSButton.swift in Sources */,
 				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
+				00FAF39B1E6B5D480032E0E9 /* AnyBooksViewModel.swift in Sources */,
 				00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */,
-				00FAF3921E6B5AE40032E0E9 /* Injector.swift in Sources */,
-				00FAF3951E6B5AE40032E0E9 /* TSCollectionsViewEx.swift in Sources */,
-				00FAF3991E6B5AE40032E0E9 /* TSViewEx.swift in Sources */,
+				00FAF3A11E6B60960032E0E9 /* CommonInjectionPreset.swift in Sources */,
+				00FAF3A71E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift in Sources */,
+				00FAF39F1E6B5DD10032E0E9 /* Book.swift in Sources */,
+				00FAF3B71E6B665E0032E0E9 /* TSArchitectureBase.swift in Sources */,
+				00FAF39D1E6B5D770032E0E9 /* AnyBookViewModel.swift in Sources */,
+				00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */,
+				00FAF3BB1E6B665E0032E0E9 /* TSViewEx.swift in Sources */,
+				00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */,
 				00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */,
-				00FAF3931E6B5AE40032E0E9 /* TSButton.swift in Sources */,
-				00FAF3901E6B5AE40032E0E9 /* Identifiable.swift in Sources */,
+				00FAF3AB1E6B65920032E0E9 /* DummyBooksViewModel.swift in Sources */,
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
+				00FAF3A91E6B64A50032E0E9 /* DummyInjectionPreset.swift in Sources */,
+				00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */,
 				00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

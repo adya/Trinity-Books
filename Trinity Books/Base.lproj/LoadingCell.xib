@@ -1,10 +1,67 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="7Ab-0P-y2t" customClass="LoadingCell" customModule="Trinity_Books" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Ab-0P-y2t" id="TwM-NA-aIY">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-1d-L0D">
+                        <rect key="frame" x="93.5" y="19.5" width="189.5" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Some loading message..." textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="xEl-1S-4qR">
+                                <rect key="frame" x="28" y="0.0" width="161.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4OU-8J-nfk">
+                                <rect key="frame" x="0.0" y="0.5" width="20" height="20"/>
+                                <color key="tintColor" red="0.38713499899999998" green="0.6526722908" blue="0.79665988679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.38713499899999998" green="0.6526722908" blue="0.79665988679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4OU-8J-nfk" firstAttribute="centerY" secondItem="ebs-1d-L0D" secondAttribute="centerY" id="1ce-d9-KE0"/>
+                            <constraint firstItem="4OU-8J-nfk" firstAttribute="leading" secondItem="ebs-1d-L0D" secondAttribute="leading" id="KgY-Ra-gbn"/>
+                            <constraint firstAttribute="bottom" secondItem="xEl-1S-4qR" secondAttribute="bottom" id="Ocp-BE-hMi"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4OU-8J-nfk" secondAttribute="bottom" id="Yga-IE-QK6"/>
+                            <constraint firstItem="xEl-1S-4qR" firstAttribute="leading" secondItem="4OU-8J-nfk" secondAttribute="trailing" constant="8" id="biC-gs-kLj"/>
+                            <constraint firstItem="4OU-8J-nfk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ebs-1d-L0D" secondAttribute="top" id="f0r-FG-geR"/>
+                            <constraint firstItem="xEl-1S-4qR" firstAttribute="centerY" secondItem="ebs-1d-L0D" secondAttribute="centerY" id="oCF-fD-njj"/>
+                            <constraint firstItem="xEl-1S-4qR" firstAttribute="top" secondItem="ebs-1d-L0D" secondAttribute="top" id="rc2-Zv-HBl"/>
+                            <constraint firstAttribute="trailing" secondItem="xEl-1S-4qR" secondAttribute="trailing" id="tsN-Op-HKd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ebs-1d-L0D" secondAttribute="bottom" constant="8" id="4pa-Om-MhM"/>
+                    <constraint firstItem="ebs-1d-L0D" firstAttribute="centerX" secondItem="TwM-NA-aIY" secondAttribute="centerX" id="Dzp-46-4oa"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ebs-1d-L0D" secondAttribute="trailing" constant="8" id="FQ8-aO-Z7w"/>
+                    <constraint firstItem="ebs-1d-L0D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TwM-NA-aIY" secondAttribute="topMargin" constant="8" id="d5E-cr-G0V"/>
+                    <constraint firstItem="ebs-1d-L0D" firstAttribute="centerY" secondItem="TwM-NA-aIY" secondAttribute="centerY" id="slH-Gf-EWp"/>
+                    <constraint firstItem="ebs-1d-L0D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TwM-NA-aIY" secondAttribute="leadingMargin" constant="8" id="whK-aQ-Lx3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="aiLoading" destination="4OU-8J-nfk" id="aUP-Hd-0Oc"/>
+                <outlet property="lMessage" destination="xEl-1S-4qR" id="8JD-Uy-wkr"/>
+            </connections>
+            <point key="canvasLocation" x="56" y="-131"/>
+        </tableViewCell>
     </objects>
 </document>

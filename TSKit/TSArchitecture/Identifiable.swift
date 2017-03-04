@@ -4,22 +4,22 @@
  - Date: 09/26/16
  */
 public protocol Identifiable : Hashable, Equatable {
-
-    var id : Int? {get}
+    var id : Int {get}
     var isValid : Bool {get}
 }
 
 
 public extension Identifiable {
-    
+
+    static var invalidId : Int { return 0 }
+
     /// Default hashValue is model's id.
     var hashValue: Int {
-        if let id = self.id { return id }
-        else { return -1 }
+        return id
     }
     
     var isValid : Bool {
-        return self.id != nil
+        return self.id != Self.invalidId
     }
 }
 

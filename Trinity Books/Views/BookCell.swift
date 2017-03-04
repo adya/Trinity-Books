@@ -1,18 +1,16 @@
-//
-//  BookCell.swift
-//  Trinity Books
-//
-//  Created by Arkadiy Glushchevsky on 3/4/17.
-//  Copyright © 2017 Arkadiy Glushchevsky. All rights reserved.
-//
-
 import UIKit
 
-class BookCell: UITableViewCell {
+class BookCell: UITableViewCell, TableViewElement, Configurable {
+
+    static let height: CGFloat = 120
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+
+    func configure(with dataSource: AnyBookCellDataSource) {
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +18,13 @@ class BookCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+}
+
+
+protocol AnyBookCellDataSource {
+    var title : String {get}
+    var coverUri : String {get}
+    var author : String {get}
 
 }

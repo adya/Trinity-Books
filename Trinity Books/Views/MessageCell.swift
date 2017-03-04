@@ -1,18 +1,13 @@
-//
-//  MessageCell.swift
-//  Trinity Books
-//
-//  Created by Arkadiy Glushchevsky on 3/4/17.
-//  Copyright © 2017 Arkadiy Glushchevsky. All rights reserved.
-//
-
 import UIKit
 
-class MessageCell: UITableViewCell {
+class MessageCell: UITableViewCell, TableViewElement, Configurable {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let height: CGFloat = 60
+
+    @IBOutlet weak private var lMessage: UILabel!
+
+    func configure(with dataSource: AnyMessageCellDataSource) {
+        lMessage.text = dataSource.message
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +15,8 @@ class MessageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+protocol AnyMessageCellDataSource {
+    var message : String {get}
 }

@@ -8,7 +8,7 @@
  - Since:      11/03/2016
  - Author:     AdYa
  */
-open class Injector {
+public class Injector {
    
     /// TSTOOLS: Upgrade Injector with ability to specify `for: Any.Type` parameter of injection to distinct injection of the same thing in different places.
     
@@ -22,19 +22,19 @@ open class Injector {
     
     /// Replaces existing `InjectionRule`s with specified in the preset.
     /// - Parameter preset: An array of rules to be set.
-    open static func configure(with preset : InjectionRulesPreset) {
+    public static func configure(with preset : InjectionRulesPreset) {
         self.configure(with: preset.rules)
     }
     
     /// Replaces existing `InjectionRule`s with specified.
     /// - Parameter rules: An array of rules to be set.
-    open static func configure(with rules : [InjectionRule]) {
+    public static func configure(with rules : [InjectionRule]) {
         rules.forEach { self.addInjectionRule($0) }
     }
     
     /// Adds a single `InjectionRule` to existing rules.
     /// - Parameter rule: A rule to be added.
-    open static func addInjectionRule(_ rule : InjectionRule) {
+    public static func addInjectionRule(_ rule : InjectionRule) {
         let protocolType = String(describing: rule.protocolType)
         let targetType = String(describing: rule.targetType)
         // Either add to existing sub-dictionary
@@ -55,10 +55,10 @@ open class Injector {
          * InjectionError.UndefinedInjectionError
          * InjectionError.ParameterCastingError
      */
-    open static func inject<InjectableType : Any> (_ injectable : InjectableType.Type, with parameter: Any? = nil) throws -> InjectableType {
+    public static func inject<InjectableType : Any> (_ injectable : InjectableType.Type, with parameter: Any? = nil) throws -> InjectableType {
         let target : Any.Type // infer target type from given parameter. By default injection rules applied to Any.
         if let param = parameter {
-            target = type(of: (param) as AnyObject)
+            target = type(of: param)
         } else {
             target = Any.Type.self
         }
@@ -91,7 +91,7 @@ open class Injector {
     }
     
     /// Prints all configured injection rules.
-    open static func printConfiguration() {
+    public static func printConfiguration() {
         print("\(TAG): Configured injection rules: \n")
         self.rules
             .flatMap{$0.1.values}
