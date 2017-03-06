@@ -1,12 +1,16 @@
+import Foundation
+
 class DummyCartManager : AnyCartManager {
     var cart: Cart?
     
-    func performLoadCart(callback: ResultOperationCallback<Cart>) {
+    func performLoadCart(callback: @escaping ResultOperationCallback<Cart>) {
         cart = dummy
-        callback(.success(cart!))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            callback(.success(self.cart!))
+        }
     }
     
-    func performAddBook(_ book: Book, callback: (AnyOperationResult) -> Void) {
+    func performAddBook(_ book: Book, callback: @escaping (AnyOperationResult) -> Void) {
         guard cart?.books[book] == nil else {
             callback(.failure(.invalidParameters))
             return
@@ -15,7 +19,7 @@ class DummyCartManager : AnyCartManager {
         callback(.success)
     }
     
-    func performRemoveBook(_ book: Book, callback: (AnyOperationResult) -> Void) {
+    func performRemoveBook(_ book: Book, callback: @escaping (AnyOperationResult) -> Void) {
         guard cart?.books[book] == nil else {
             callback(.failure(.invalidParameters))
             return

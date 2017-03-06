@@ -59,7 +59,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translucent="NO" id="4d0-ap-BTX">
+                <searchBar userInteractionEnabled="NO" contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translucent="NO" id="4d0-ap-BTX">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

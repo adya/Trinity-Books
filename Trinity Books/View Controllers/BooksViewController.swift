@@ -86,6 +86,10 @@ extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return hasBooks && (!viewModel.isLoading || indexPath.row > 0)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedBook = indexPath
         tableView.deselectRow(at: indexPath, animated: true)

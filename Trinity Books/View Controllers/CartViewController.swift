@@ -45,15 +45,16 @@ class CartViewController: UIViewController {
     
     func setCart(_ cart: Cart) {
         viewModel = try! Injector.inject(AnyBooksViewModel.self, with: cart.books, for: self)
+        tvBooks.reloadData()
     }
     
     func showLoading() {
         viewModel.isLoading = true
         let indexPath = [IndexPath(row: 0, section: 0)]
         if hasBooks {
-            tvBooks.insertRows(at: indexPath, with: .automatic)
+            tvBooks.insertRows(at: indexPath, with: .top)
         } else {
-            tvBooks.reloadRows(at: indexPath, with: .automatic)
+            tvBooks.reloadRows(at: indexPath, with: .fade)
         }
     }
     
@@ -61,9 +62,9 @@ class CartViewController: UIViewController {
         viewModel.isLoading = false
         let indexPath = [IndexPath(row: 0, section: 0)]
         if hasBooks {
-            tvBooks.deleteRows(at: indexPath, with: .automatic)
+            tvBooks.deleteRows(at: indexPath, with: .top)
         } else {
-            tvBooks.reloadRows(at: indexPath, with: .automatic)
+            tvBooks.reloadRows(at: indexPath, with: .fade)
         }
     }
 }
@@ -84,7 +85,7 @@ private extension CartViewController {
                     self.loadCart()
                 })
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in })
-                present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -110,7 +111,7 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return hasBooks ? !viewModel.isLoading ? BookCell.height : MessageCell.height : MessageCell.height
+        return hasBooks ? viewModel.isLoading && indexPath.row == 0 ? LoadingCell.height : BookCell.height : MessageCell.height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,6 +132,10 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
             cell.configure(with: viewModel.emptyMessage)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return hasBooks && (!viewModel.isLoading || indexPath.row > 0)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

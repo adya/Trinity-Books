@@ -30,15 +30,15 @@ class BookCell: UITableViewCell, TableViewElement, Configurable {
         }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
         UIView.animate(withDuration: animated ? 0.7 : 0.0) {
-            self.contentView.backgroundColor = selected ? Pallete.main : UIColor.white
-            self.tintColor = selected ? UIColor.white : Pallete.main
-            self.lTitle.textColor = selected ? UIColor.white : UIColor.darkText
-            self.lAuthor.textColor = selected ? UIColor.white : UIColor.darkGray
-            self.lDescription.textColor = selected ? UIColor.white : UIColor.darkText
-            self.aiLoadingCover.color = selected ? UIColor.white : Pallete.main
+            self.contentView.backgroundColor = highlighted ? Pallete.main : UIColor.white
+            self.tintColor = highlighted ? UIColor.white : Pallete.main
+            self.lTitle.textColor = highlighted ? UIColor.white : UIColor.darkText
+            self.lAuthor.textColor = highlighted ? UIColor.white : UIColor.darkGray
+            self.lDescription.textColor = highlighted ? UIColor.white : UIColor.darkText
+            self.aiLoadingCover.color = highlighted ? UIColor.white : Pallete.main
         }
     }
 

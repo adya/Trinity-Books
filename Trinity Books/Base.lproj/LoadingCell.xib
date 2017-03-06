@@ -28,7 +28,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4OU-8J-nfk">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4OU-8J-nfk">
                                 <rect key="frame" x="0.0" y="0.5" width="20" height="20"/>
                                 <color key="tintColor" red="0.38713499899999998" green="0.6526722908" blue="0.79665988679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.38713499899999998" green="0.6526722908" blue="0.79665988679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,7 +58,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="aiLoading" destination="4OU-8J-nfk" id="aUP-Hd-0Oc"/>
+                <outlet property="aiLoading" destination="4OU-8J-nfk" id="iqz-sA-dgG"/>
                 <outlet property="lMessage" destination="xEl-1S-4qR" id="8JD-Uy-wkr"/>
             </connections>
             <point key="canvasLocation" x="56" y="-131"/>
