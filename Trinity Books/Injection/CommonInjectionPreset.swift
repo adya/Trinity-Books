@@ -3,7 +3,7 @@ class CommonInjectionPreset : InjectionRulesPreset {
 
     init() {
         rules = [
-            InjectionRule(injectable: AnyMessageCellDataSource.self, targetType: String.self) {
+            InjectionRule(injectable: AnyMessageCellDataSource.self, targetType: String.self, meta: SimpleMessageCellDataSource.self) {
                 return SimpleMessageCellDataSource(message: $0)
             }
         ]

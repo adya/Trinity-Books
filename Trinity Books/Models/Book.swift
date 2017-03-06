@@ -4,4 +4,6 @@ struct Book : Identifiable {
     let author : String
     let description : String
     let coverUri : String
+    let thumbnailUri : String
+    var inLibrary : Bool
 }

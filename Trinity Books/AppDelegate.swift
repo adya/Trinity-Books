@@ -8,6 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         Injector.configure(with: DummyInjectionPreset())
+        Injector.configure(with: ProductionInjectionPreset())
         Injector.printConfiguration()
     }
 
