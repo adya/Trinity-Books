@@ -2,24 +2,24 @@ import Foundation
 
 class DummyBooksProvider : AnyBooksProvider {
     
-    private let cartManager : AnyCartManager
+    private let libraryManager : AnyLibraryManager
     
-    init(cartManager: AnyCartManager) {
-        self.cartManager = cartManager
+    init(libraryManager: AnyLibraryManager) {
+        self.libraryManager = libraryManager
     }
     
     func performBookSearch(term: String, callback: @escaping (OperationResult<[Book]>) -> Void) {
-        DispatchQueue.global().async() {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
             var books : [Book]
-            switch term {
+            switch term.lowercased() {
                 case "all": books = DummyBooksProvider.dummies
                 case "part": books = DummyBooksProvider.dummies.random(2)
                 default: books = []
             }
-            // check books in cart.
+            // check books in library.
             books =  books.map {
                 var book = $0
-                book.inLibrary = self.cartManager.cart?.books.contains(book) ?? false
+                book.inLibrary = self.libraryManager.library?.books.contains(book) ?? false
                 return book
             }
             DispatchQueue.main.async {

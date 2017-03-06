@@ -13,45 +13,46 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" rowHeight="120" id="xGf-ZF-gPQ" customClass="BookCell" customModule="Trinity_Books" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" rowHeight="140" id="xGf-ZF-gPQ" customClass="BookCell" customModule="Trinity_Books" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGf-ZF-gPQ" id="ZD1-l0-Zwg">
-                <rect key="frame" x="0.0" y="0.0" width="335" height="119"/>
+                <rect key="frame" x="0.0" y="0.0" width="335" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IBC-20-CON">
-                        <rect key="frame" x="8" y="8" width="103.5" height="103.5"/>
+                        <rect key="frame" x="8" y="8" width="93.5" height="140"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="IBC-20-CON" secondAttribute="height" multiplier="1:1" id="Yc7-x0-n0Q"/>
+                            <constraint firstAttribute="width" secondItem="IBC-20-CON" secondAttribute="height" multiplier="2:3" id="Yc7-x0-n0Q"/>
+                            <constraint firstAttribute="height" constant="140" id="nHO-Dp-zlM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title long long long longlong long long end" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="COh-3Q-W4T">
-                        <rect key="frame" x="127.5" y="16" width="165.5" height="25.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title long long long longlong long long end" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COh-3Q-W4T">
+                        <rect key="frame" x="117.5" y="16" width="165.5" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Author" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-1z-Ueg">
-                        <rect key="frame" x="127" y="49.5" width="43.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Author" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-1z-Ueg">
+                        <rect key="frame" x="117" y="62.5" width="43.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" text="Description of this book will be here" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwT-D6-4F5">
-                        <rect key="frame" x="127" y="74.5" width="193" height="29"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" text="Description of this book will be here" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwT-D6-4F5">
+                        <rect key="frame" x="117" y="87.5" width="203" height="14.5"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wOB-IF-TBX">
-                        <rect key="frame" x="41" y="41" width="37" height="37"/>
+                        <rect key="frame" x="36" y="59" width="37" height="37"/>
                         <color key="color" red="0.38713499899999998" green="0.6526722908" blue="0.79665988679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="IBC-20-CON" firstAttribute="leading" secondItem="ZD1-l0-Zwg" secondAttribute="leading" constant="8" id="6E4-99-NYZ"/>
-                    <constraint firstAttribute="bottom" secondItem="IBC-20-CON" secondAttribute="bottom" constant="8" id="Hu8-Z2-K3J"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IBC-20-CON" secondAttribute="bottom" constant="8" id="Hu8-Z2-K3J"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="COh-3Q-W4T" secondAttribute="trailing" constant="8" id="ITq-Te-KMl"/>
                     <constraint firstItem="COh-3Q-W4T" firstAttribute="leading" secondItem="IBC-20-CON" secondAttribute="trailing" constant="16" id="Jzc-zK-LDY"/>
                     <constraint firstItem="0Hd-1z-Ueg" firstAttribute="top" secondItem="COh-3Q-W4T" secondAttribute="bottom" constant="8" id="Khj-xn-YIB"/>

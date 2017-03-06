@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000A261B1E6CC594004D53F2 /* AnyCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A261A1E6CC594004D53F2 /* AnyCartManager.swift */; };
+		000A261B1E6CC594004D53F2 /* AnyLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A261A1E6CC594004D53F2 /* AnyLibraryManager.swift */; };
 		000A261D1E6CC8FF004D53F2 /* TSOperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A261C1E6CC8FF004D53F2 /* TSOperationError.swift */; };
-		000A261F1E6CC9BD004D53F2 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A261E1E6CC9BD004D53F2 /* Cart.swift */; };
+		000A261F1E6CC9BD004D53F2 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A261E1E6CC9BD004D53F2 /* Library.swift */; };
 		000A26241E6CD07F004D53F2 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26231E6CD07F004D53F2 /* BookViewModel.swift */; };
-		000A26261E6CD190004D53F2 /* DummyCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26251E6CD190004D53F2 /* DummyCartManager.swift */; };
-		000A26281E6CD1AD004D53F2 /* CartBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26271E6CD1AD004D53F2 /* CartBookViewModel.swift */; };
+		000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26251E6CD190004D53F2 /* DummyLibraryManager.swift */; };
+		000A26281E6CD1AD004D53F2 /* LibraryBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */; };
 		000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */; };
 		000A262C1E6CE665004D53F2 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262B1E6CE665004D53F2 /* BooksViewModel.swift */; };
-		000A262E1E6CE7D0004D53F2 /* CartBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262D1E6CE7D0004D53F2 /* CartBooksViewModel.swift */; };
+		000A262E1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */; };
 		000A26301E6D6DDD004D53F2 /* DummyBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */; };
 		000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */; };
+		000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26351E6DC877004D53F2 /* SplashViewController.swift */; };
 		001D4AF41E6C6DB3003F65C8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 001D4AF31E6C6DB3003F65C8 /* Podfile */; };
 		00696C8D1E6C9ACD00028AE7 /* TSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */; };
 		00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */; };
@@ -31,7 +32,7 @@
 		0086CD3F1E6AB20700BF054E /* Trinity_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD3E1E6AB20700BF054E /* Trinity_BooksTests.swift */; };
 		0086CD4A1E6AB20700BF054E /* Trinity_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */; };
 		00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */; };
-		00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3461E6B559D0032E0E9 /* CartViewController.swift */; };
+		00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */; };
 		00FAF3541E6B59F10032E0E9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF3521E6B59F10032E0E9 /* MessageCell.xib */; };
 		00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3551E6B5A000032E0E9 /* MessageCell.swift */; };
 		00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3571E6B5A110032E0E9 /* LoadingCell.swift */; };
@@ -75,20 +76,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000A261A1E6CC594004D53F2 /* AnyCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartManager.swift; sourceTree = "<group>"; };
+		000A261A1E6CC594004D53F2 /* AnyLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AnyLibraryManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A261C1E6CC8FF004D53F2 /* TSOperationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSOperationError.swift; sourceTree = "<group>"; };
-		000A261E1E6CC9BD004D53F2 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		000A261E1E6CC9BD004D53F2 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Library.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26231E6CD07F004D53F2 /* BookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
-		000A26251E6CD190004D53F2 /* DummyCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCartManager.swift; sourceTree = "<group>"; };
-		000A26271E6CD1AD004D53F2 /* CartBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartBookViewModel.swift; sourceTree = "<group>"; };
-		000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionInjectionPreset.swift; sourceTree = "<group>"; };
+		000A26251E6CD190004D53F2 /* DummyLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyLibraryManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryBookViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductionInjectionPreset.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A262B1E6CE665004D53F2 /* BooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
-		000A262D1E6CE7D0004D53F2 /* CartBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartBooksViewModel.swift; sourceTree = "<group>"; };
-		000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBooksProvider.swift; sourceTree = "<group>"; };
+		000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryBooksViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyBooksProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBooksViewController.swift; sourceTree = "<group>"; };
+		000A26351E6DC877004D53F2 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SplashViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		001D4AF31E6C6DB3003F65C8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSUtils.swift; sourceTree = "<group>"; };
-		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
+		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BookDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00696C901E6CA61400028AE7 /* Pallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pallete.swift; sourceTree = "<group>"; };
 		00696C921E6CA67100028AE7 /* TSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSExtensions.swift; sourceTree = "<group>"; };
 		0078EB38839E38EBE82D5E38 /* Pods_Trinity_BooksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trinity_BooksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +107,8 @@
 		0086CD451E6AB20700BF054E /* Trinity BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trinity BooksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trinity_BooksUITests.swift; sourceTree = "<group>"; };
 		0086CD4B1E6AB20700BF054E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
-		00FAF3461E6B559D0032E0E9 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BooksViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00FAF3531E6B59F10032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/MessageCell.xib"; sourceTree = SOURCE_ROOT; };
 		00FAF3551E6B5A000032E0E9 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		00FAF3571E6B5A110032E0E9 /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
@@ -119,7 +121,7 @@
 		00FAF3A01E6B60960032E0E9 /* CommonInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonInjectionPreset.swift; sourceTree = "<group>"; };
 		00FAF3A41E6B61490032E0E9 /* DummyBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBookViewModel.swift; sourceTree = "<group>"; };
 		00FAF3A61E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMessageCellDataSource.swift; sourceTree = "<group>"; };
-		00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyInjectionPreset.swift; sourceTree = "<group>"; };
+		00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyInjectionPreset.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00FAF3AA1E6B65920032E0E9 /* DummyBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBooksViewModel.swift; sourceTree = "<group>"; };
 		00FAF3AE1E6B665E0032E0E9 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		00FAF3AF1E6B665E0032E0E9 /* TSArchitectureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSArchitectureBase.swift; sourceTree = "<group>"; };
@@ -169,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				000A26231E6CD07F004D53F2 /* BookViewModel.swift */,
-				000A26271E6CD1AD004D53F2 /* CartBookViewModel.swift */,
+				000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */,
 				000A262B1E6CE665004D53F2 /* BooksViewModel.swift */,
-				000A262D1E6CE7D0004D53F2 /* CartBooksViewModel.swift */,
+				000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */,
 			);
 			name = "Model based";
 			sourceTree = "<group>";
@@ -180,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				007BA6511E6CB70500860D6B /* AnyBooksProvider.swift */,
-				000A261A1E6CC594004D53F2 /* AnyCartManager.swift */,
+				000A261A1E6CC594004D53F2 /* AnyLibraryManager.swift */,
 			);
 			name = Definitions;
 			sourceTree = "<group>";
@@ -188,7 +190,7 @@
 		007BA6501E6CB47F00860D6B /* Dummies */ = {
 			isa = PBXGroup;
 			children = (
-				000A26251E6CD190004D53F2 /* DummyCartManager.swift */,
+				000A26251E6CD190004D53F2 /* DummyLibraryManager.swift */,
 				000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */,
 			);
 			name = Dummies;
@@ -276,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				00FAF39E1E6B5DD10032E0E9 /* Book.swift */,
-				000A261E1E6CC9BD004D53F2 /* Cart.swift */,
+				000A261E1E6CC9BD004D53F2 /* Library.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,10 +286,11 @@
 		00FAF3441E6B559D0032E0E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */,
-				00FAF3461E6B559D0032E0E9 /* CartViewController.swift */,
-				00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */,
 				000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */,
+				00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */,
+				00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */,
+				00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */,
+				000A26351E6DC877004D53F2 /* SplashViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -485,7 +488,6 @@
 				TargetAttributes = {
 					0086CD231E6AB20600BF054E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = P2NBF8K2F9;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -700,8 +702,8 @@
 				00FAF3A51E6B61490032E0E9 /* DummyBookViewModel.swift in Sources */,
 				00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */,
 				00FAF3B91E6B665E0032E0E9 /* TSButton.swift in Sources */,
-				000A261F1E6CC9BD004D53F2 /* Cart.swift in Sources */,
-				000A26261E6CD190004D53F2 /* DummyCartManager.swift in Sources */,
+				000A261F1E6CC9BD004D53F2 /* Library.swift in Sources */,
+				000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */,
 				000A261D1E6CC8FF004D53F2 /* TSOperationError.swift in Sources */,
 				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
 				00696C911E6CA61400028AE7 /* Pallete.swift in Sources */,
@@ -710,7 +712,7 @@
 				00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */,
 				00FAF3A11E6B60960032E0E9 /* CommonInjectionPreset.swift in Sources */,
 				000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */,
-				000A26281E6CD1AD004D53F2 /* CartBookViewModel.swift in Sources */,
+				000A26281E6CD1AD004D53F2 /* LibraryBookViewModel.swift in Sources */,
 				00FAF3A71E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift in Sources */,
 				00FAF39F1E6B5DD10032E0E9 /* Book.swift in Sources */,
 				000A26301E6D6DDD004D53F2 /* DummyBooksProvider.swift in Sources */,
@@ -718,11 +720,12 @@
 				00FAF39D1E6B5D770032E0E9 /* AnyBookViewModel.swift in Sources */,
 				00696C931E6CA67100028AE7 /* TSExtensions.swift in Sources */,
 				00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */,
+				000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */,
 				00FAF3BB1E6B665E0032E0E9 /* TSViewEx.swift in Sources */,
-				000A261B1E6CC594004D53F2 /* AnyCartManager.swift in Sources */,
-				000A262E1E6CE7D0004D53F2 /* CartBooksViewModel.swift in Sources */,
+				000A261B1E6CC594004D53F2 /* AnyLibraryManager.swift in Sources */,
+				000A262E1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift in Sources */,
 				00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */,
-				00FAF34A1E6B559D0032E0E9 /* CartViewController.swift in Sources */,
+				00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */,
 				000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */,
 				00FAF3AB1E6B65920032E0E9 /* DummyBooksViewModel.swift in Sources */,
 				00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */,
@@ -909,7 +912,8 @@
 			baseConfigurationReference = 57B7AE94EB70FACF9E104996 /* Pods-Trinity Books.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P2NBF8K2F9;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Trinity Books/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -924,7 +928,8 @@
 			baseConfigurationReference = F8D5ED2B3D8C4F4741D942BB /* Pods-Trinity Books.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P2NBF8K2F9;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Trinity Books/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

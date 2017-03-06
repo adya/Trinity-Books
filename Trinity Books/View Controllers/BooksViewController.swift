@@ -7,10 +7,9 @@ class BooksViewController: BaseBooksViewController {
     }
     
     fileprivate let manager = try! Injector.inject(AnyBooksProvider.self)
-    fileprivate let cartManager = try! Injector.inject(AnyCartManager.self)
+    fileprivate let libraryManager = try! Injector.inject(AnyLibraryManager.self)
     
-    private var searchController : UISearchController!
-    
+    @IBOutlet weak fileprivate var searchBar: UISearchBar!
     @IBOutlet weak fileprivate var tvBooks: UITableView!
     
     fileprivate var viewModel : AnyBooksViewModel!
@@ -18,47 +17,46 @@ class BooksViewController: BaseBooksViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tvBooks.rowHeight = UITableViewAutomaticDimension
         viewModel = try! Injector.inject(AnyBooksViewModel.self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let selectedBook = selectedBookCellIndex { // when returning from details screen update selected book
-            updateBookViewModel(at: selectedBook)
-            self.selectedBookCellIndex = nil
+    private func findBook(_ book: Book) -> Int? {
+        return viewModel.books?.index {
+            $0.book == book
         }
     }
     
+    /// Updates list of books when it's changed
     override func bookHasBeenAdded(_ book: Book) {
-        guard let index = viewModel.books?.index(where: {
-            $0.book == book
-        }) else {
-            print("Book wasn't found in viewModel.")
+        guard let index = findBook(book) else {
+            print("\(type(of: self)): Book wasn't found in viewModel.")
             return
         }
         updateBookViewModel(with: book, at: bookCellIndex(at: index))
     }
     
+    /// Updates list of books when it's changed
     override func bookHasBeenRemoved(_ book: Book) {
-        guard let selectedBook = selectedBookCellIndex else {
-            print("Selected index was not set")
+        guard let index = findBook(book) else {
+            print("\(type(of: self)): Book wasn't found in viewModel.")
             return
         }
-        updateBookViewModel(with: book, at: selectedBook)
+        updateBookViewModel(with: book, at: bookCellIndex(at: index))
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier, id == Segues.toDetails.rawValue, let controller = segue.destination as? BookDetailsViewController else {
-            print("Unsupported segue")
+            print("\(type(of: self)): Unsupported segue")
             return
         }
         
         guard let index = selectedBookCellIndex.flatMap({bookIndex(at: $0)}),
             let book = viewModel?.books?[index].book else {
-            print("Selection was not defined.")
+            print("\(type(of: self)): Selection was not defined.")
             return
         }
-        
+        selectedBookCellIndex = nil
         controller.setBook(book)
     }
     
@@ -93,35 +91,40 @@ private extension BooksViewController {
         }
     }
     
-    func reloadViewModel(with books: [Book]) {
-        viewModel = try! Injector.inject(AnyBooksViewModel.self, with: books)
+    func reloadViewModel(with books: [Book]? = nil) {
+        if let books = books {
+            viewModel = try! Injector.inject(AnyBooksViewModel.self, with: books)
+        } else {
+            viewModel = try! Injector.inject(AnyBooksViewModel.self)
+        }
         tvBooks.reloadData()
     }
 }
 
 // MARK: - Interactor
 private extension BooksViewController {
-    func addToCart(at indexPath: IndexPath) {
+    func addToLibrary(at indexPath: IndexPath) {
         let index = bookIndex(at: indexPath)
         guard let book = viewModel.books?[index].book else {
-            print("Invalid book")
+            print("\(type(of: self)): Invalid book")
             return
         }
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        cartManager.performAddBook(book) {
+        libraryManager.performAddBook(book) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            switch $0 {
-            case let .success(updatedBook):
-                self.updateBookViewModel(with: updatedBook, at: indexPath)
-            case let .failure(error):
+//            switch $0 {
+//            case let .success(updatedBook):
+                // updates handled via notifications.
+                // self.updateBookViewModel(with: updatedBook, at: indexPath)
+            if case let .failure(error) = $0 {
                 guard error != .invalidParameters else {
-                    print("Book is already in the cart")
+                    print("\(type(of: self)): Book is already in the library")
                     return
                 }
-                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your cart", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your library", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
-                    self.addToCart(at: indexPath)
+                    self.addToLibrary(at: indexPath)
                 })
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in })
                 self.present(alert, animated: true, completion: nil)
@@ -133,16 +136,17 @@ private extension BooksViewController {
         let index = bookIndex(at: indexPath)
         if let book = viewModel.books?[index].book {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            cartManager.performRemoveBook(book) { _ in
+            libraryManager.performRemoveBook(book) { _ in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                self.updateBookViewModel(at: indexPath)
+                // updates handled via notifications.
+                // self.updateBookViewModel(at: indexPath)
             }
         } else {
-            print("Failed to remove product")
+            print("\(type(of: self)): Failed to remove product")
         }
     }
     
-    func serachBooks(term : String) {
+    func searchBooks(term : String) {
         showLoading()
         manager.performBookSearch(term: term) {
             self.hideLoading()
@@ -150,9 +154,58 @@ private extension BooksViewController {
             case let .success(books):
                 self.reloadViewModel(with: books)
             case .failure:
-                print("failed")
+                print("\(type(of: self)): failed")
             }
         }
+    }
+}
+
+
+// MARK: - Presenter
+private extension BooksViewController {
+    func showLoading() {
+        guard !viewModel.isLoading else {
+            return
+        }
+        viewModel.isLoading = true
+        let indexPath = [IndexPath(row: 0, section: 0)]
+        if hasBooks {
+            tvBooks.insertRows(at: indexPath, with: .top)
+        } else {
+            tvBooks.reloadRows(at: indexPath, with: .fade)
+        }
+    }
+    
+    func hideLoading() {
+        guard viewModel.isLoading else {
+            return
+        }
+        viewModel.isLoading = false
+        let indexPath = [IndexPath(row: 0, section: 0)]
+        if hasBooks {
+            tvBooks.deleteRows(at: indexPath, with: .top)
+        } else {
+            tvBooks.reloadRows(at: indexPath, with: .fade)
+        }
+    }
+    
+}
+
+// MARK: Search
+extension BooksViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        guard let term = searchBar.text else {
+            print("\(type(of: self)): Empty string")
+            return
+        }
+        searchBooks(term: term)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        reloadViewModel()
     }
 }
 
@@ -187,7 +240,7 @@ extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
         return hasBooks ? viewModel.books!.count + (viewModel.isLoading ? 1 : 0) : 1 // empty cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return hasBooks ? isBookCellIndex(at: indexPath) ? BookCell.height : LoadingCell.height : MessageCell.height
     }
     
@@ -228,18 +281,18 @@ extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
         delete.backgroundColor = UIColor.gray
         
         let index = bookIndex(at: indexPath)
-        let inCart = viewModel.books?[index].inLibrary ?? false
+        let inLibrary = viewModel.books?[index].inLibrary ?? false
         
-        let toCart = UITableViewRowAction(style: .normal, title: inCart ? "Remove" : "Add to cart", handler: { (action, indexPath) in
-            if inCart {
+        let toLibrary = UITableViewRowAction(style: .normal, title: inLibrary ? "Remove from Library" : "Add to Library", handler: { (action, indexPath) in
+            if inLibrary {
                 self.removeBook(at: indexPath)
             } else {
-                self.addToCart(at: indexPath)
+                self.addToLibrary(at: indexPath)
             }
         })
-        toCart.backgroundColor = inCart ? Pallete.red : Pallete.main
+        toLibrary.backgroundColor = inLibrary ? Pallete.red : Pallete.main
         
-        return [delete, toCart]
+        return [delete, toLibrary]
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -247,34 +300,4 @@ extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {/* Stub to make cell editing working */}
-}
-
-// MARK: - Presenter
-private extension BooksViewController {
-    func showLoading() {
-        guard !viewModel.isLoading else {
-            return
-        }
-        viewModel.isLoading = true
-        let indexPath = [IndexPath(row: 0, section: 0)]
-        if hasBooks {
-            tvBooks.insertRows(at: indexPath, with: .top)
-        } else {
-            tvBooks.reloadRows(at: indexPath, with: .fade)
-        }
-    }
-    
-    func hideLoading() {
-        guard viewModel.isLoading else {
-            return
-        }
-        viewModel.isLoading = false
-        let indexPath = [IndexPath(row: 0, section: 0)]
-        if hasBooks {
-            tvBooks.deleteRows(at: indexPath, with: .top)
-        } else {
-            tvBooks.reloadRows(at: indexPath, with: .fade)
-        }
-    }
-
 }

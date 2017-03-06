@@ -21,19 +21,19 @@ class DummyInjectionPreset : CommonInjectionPreset {
         ]
     }
     
-    private var cartManager : AnyCartManager {
-        return try! Injector.inject(AnyCartManager.self)
+    private var libraryManager : AnyLibraryManager {
+        return try! Injector.inject(AnyLibraryManager.self)
     }
     
     var managers : [InjectionRule] {
         return [
-            InjectionRule(injectable: AnyCartManager.self,
-                          meta: DummyCartManager.self,
-                          injected: DummyCartManager()),
+            InjectionRule(injectable: AnyLibraryManager.self,
+                          meta: DummyLibraryManager.self,
+                          injected: DummyLibraryManager()),
             
             InjectionRule(injectable: AnyBooksProvider.self,
                           meta: DummyBooksProvider.self,
-                          injected: DummyBooksProvider(cartManager: self.cartManager))
+                          injected: DummyBooksProvider(libraryManager: self.libraryManager))
         ]
     }
 }

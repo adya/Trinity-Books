@@ -1,4 +1,4 @@
-struct CartBooksViewModel : AnyBooksViewModel {
+struct LibraryBooksViewModel : AnyBooksViewModel {
     var books: [AnyBookViewModel]?
     
     let emptyMessage = try! Injector.inject(AnyMessageCellDataSource.self,
@@ -12,6 +12,6 @@ struct CartBooksViewModel : AnyBooksViewModel {
     init(books: [Book]? = nil) {
         self.books = books?.map{try! Injector.inject(AnyBookViewModel.self,
                                                      with: $0,
-                                                     for: CartBooksViewModel.self)}
+                                                     for: LibraryBooksViewModel.self)}
     }
 }

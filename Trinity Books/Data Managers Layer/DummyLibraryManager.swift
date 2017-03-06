@@ -1,46 +1,48 @@
 import Foundation
 
-class DummyCartManager : AnyCartManager {
+class DummyLibraryManager : AnyLibraryManager {
     
-    var cart: Cart?
+    var library: Library?
     
-    func performLoadCart(callback: @escaping ResultOperationCallback<Cart>) {
-        cart = dummy
+    func performLoadLibrary(callback: @escaping ResultOperationCallback<Library>) {
+        library = dummy
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            callback(.success(self.cart!))
+            callback(.success(self.library!))
         }
     }
     
     func performAddBook(_ book: Book, callback: @escaping (OperationResult<Book>) -> Void) {
-        guard cart?.books[book] == nil else {
+        guard library?.books[book] == nil else {
             callback(.failure(.invalidParameters))
             return
         }
         var book = book
         book.inLibrary = true
-        cart?.books.append(book)
+        library?.books.append(book)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: LibraryNotification.bookAdded.rawValue), object: book)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             callback(.success(book))
         }
     }
     
     func performRemoveBook(_ book: Book, callback: ((OperationResult<Book>) -> Void)?) {
-        guard cart?.books[book] != nil else {
+        guard library?.books[book] != nil else {
             callback?(.failure(.invalidParameters))
             return
         }
-        cart?.books[book] = nil
+        library?.books[book] = nil
         var book = book
         book.inLibrary = false
+         NotificationCenter.default.post(name: Notification.Name(rawValue: LibraryNotification.bookRemoved.rawValue), object: book)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             callback?(.success(book))
         }
     }
 }
 
-private extension DummyCartManager {
-    var dummy : Cart {
-        return Cart(books: DummyBooksProvider.dummies.random(3).map{
+private extension DummyLibraryManager {
+    var dummy : Library {
+        return Library(books: DummyBooksProvider.dummies.random(2).map{
             var book = $0
             book.inLibrary = true
             return book

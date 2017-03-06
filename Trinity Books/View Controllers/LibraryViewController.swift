@@ -1,12 +1,12 @@
 import UIKit
 
-class CartViewController: BaseBooksViewController {
+class LibraryViewController: BaseBooksViewController {
 
     fileprivate enum Segues : String {
         case toDetails = "segDetails"
     }
     
-    fileprivate let manager = try! Injector.inject(AnyCartManager.self)
+    fileprivate let manager = try! Injector.inject(AnyLibraryManager.self)
     
     fileprivate var viewModel : AnyBooksViewModel!
     fileprivate var selectedBookCellIndex : IndexPath?
@@ -16,47 +16,60 @@ class CartViewController: BaseBooksViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = try! Injector.inject(AnyBooksViewModel.self, for: self)
-        loadCart()
+        tvBooks.rowHeight = UITableViewAutomaticDimension
+        guard let library = manager.library else {
+            loadLibrary()
+            return
+        }
+        setLibrary(library)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier, id == Segues.toDetails.rawValue, let controller = segue.destination as? BookDetailsViewController else {
-            print("Unsupported segue")
+            print("\(type(of: self)): Unsupported segue")
             return
         }
         
         guard let index = selectedBookCellIndex.flatMap({bookIndex(at: $0)}),
             let book = viewModel?.books?[index].book else {
-                print("Selection was not defined.")
+                print("\(type(of: self)): Selection was not defined.")
                 return
         }
         controller.setBook(book)
     }
     
+    private func findBook(_ book: Book) -> Int? {
+        return viewModel.books?.index {
+            $0.book == book
+        }
+    }
+    
+    /// Updates list of books when it's changed
     override func bookHasBeenAdded(_ book: Book) {
-        guard let selectedBook = selectedBookCellIndex else {
-            print("Selected index was not set")
+        guard let index = viewModel.books?.count else {
+            print("\(type(of: self)): Book wasn't found in viewModel.")
             return
         }
-        addBookViewModel(book: book, at: selectedBook)
+        addBookViewModel(book: book, at: bookCellIndex(at: index))
     }
     
+    /// Updates list of books when it's changed
     override func bookHasBeenRemoved(_ book: Book) {
-        guard let selectedBook = selectedBookCellIndex else {
-            print("Selected index was not set")
+        guard let index = findBook(book) else {
+            print("\(type(of: self)): Book wasn't found in viewModel.")
             return
         }
-        removeBookViewModel(at: selectedBook)
+        removeBookViewModel(at: bookCellIndex(at: index))
     }
-    
-    func setCart(_ cart: Cart) {
-        viewModel = try! Injector.inject(AnyBooksViewModel.self, with: cart.books, for: self)
+
+    func setLibrary(_ library: Library) {
+        viewModel = try! Injector.inject(AnyBooksViewModel.self, with: library.books, for: self)
         tvBooks.reloadData()
     }
 }
 
 // MARK: - Presenter?
-private extension CartViewController {
+private extension LibraryViewController {
     func removeBookViewModel(at indexPath: IndexPath) {
         let index = bookIndex(at: indexPath)
         viewModel.books?.remove(at: index)
@@ -79,19 +92,19 @@ private extension CartViewController {
 }
 
 // MARK: - Interactor
-private extension CartViewController {
+private extension LibraryViewController {
     
-    func loadCart() {
+    func loadLibrary() {
         showLoading()
-        manager.performLoadCart() {
+        manager.performLoadLibrary() {
             self.hideLoading()
             switch $0 {
-            case let .success(cart):
-                self.setCart(cart)
+            case let .success(library):
+                self.setLibrary(library)
             case .failure:
-                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your cart", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your library", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
-                    self.loadCart()
+                    self.loadLibrary()
                 })
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in })
                 self.present(alert, animated: true, completion: nil)
@@ -107,22 +120,23 @@ private extension CartViewController {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         } else {
-            print("Failed to remove product")
+            print("\(type(of: self)): Failed to remove product")
         }
-        removeBookViewModel(at: indexPath)
+        // updates handled via notifications.
+        // removeBookViewModel(at: indexPath)
     }
 }
 
 // MARK: - Controller
-private extension CartViewController {
+private extension LibraryViewController {
     @IBAction func actionRefresh(_ sender: UIButton) {
-        loadCart()
+        loadLibrary()
     }
 
 }
 
 // MARK: - TableView (Presenter & Controller)
-extension CartViewController : UITableViewDataSource, UITableViewDelegate {
+extension LibraryViewController : UITableViewDataSource, UITableViewDelegate {
     
     fileprivate var hasBooks : Bool {
         return viewModel.books?.count ?? 0 > 0
@@ -152,7 +166,7 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
         return hasBooks ? viewModel.books!.count + (viewModel.isLoading ? 1 : 0) : 1 // empty cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return hasBooks ? isBookCellIndex(at: indexPath) ? BookCell.height : LoadingCell.height : MessageCell.height
     }
     
@@ -202,7 +216,7 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - Presenter
-private extension CartViewController {
+private extension LibraryViewController {
     func showLoading() {
         guard !viewModel.isLoading else {
             return

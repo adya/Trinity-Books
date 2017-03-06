@@ -1,4 +1,4 @@
-struct CartBookViewModel : AnyBookViewModel {
+struct LibraryBookViewModel : AnyBookViewModel {
     let book: Book
     
     var title: String {

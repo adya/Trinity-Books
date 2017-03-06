@@ -4,7 +4,7 @@ import AlamofireImage
 
 class BookCell: UITableViewCell, TableViewElement, Configurable {
 
-    static let height: CGFloat = 120
+    static let height: CGFloat = 140
 
     @IBOutlet weak private var lTitle: UILabel!
     @IBOutlet weak private var lAuthor: UILabel!
@@ -20,7 +20,7 @@ class BookCell: UITableViewCell, TableViewElement, Configurable {
         accessoryType = dataSource.inLibrary ? .checkmark : .none
         
         guard let url = URL(string: dataSource.thumbnailUri) else {
-            print("Invalid url for cover : \(dataSource.thumbnailUri)")
+            print("\(type(of: self)): Invalid url for cover : \(dataSource.thumbnailUri)")
             return
         }
         aiLoadingCover.startAnimating()

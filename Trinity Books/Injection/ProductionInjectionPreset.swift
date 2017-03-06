@@ -12,15 +12,15 @@ class ProductionInjectionPreset : CommonInjectionPreset {
             },
             InjectionRule(injectable: AnyBookViewModel.self,
                           targetType: Book.self,
-                          destinationType: CartBooksViewModel.self,
-                          meta: CartBookViewModel.self) {
-                            return CartBookViewModel(book: $0)
+                          destinationType: LibraryBooksViewModel.self,
+                          meta: LibraryBookViewModel.self) {
+                            return LibraryBookViewModel(book: $0)
             },
             InjectionRule(injectable: AnyBookViewModel.self,
                           targetType: Book.self,
-                          destinationType: CartViewController.self,
-                          meta: CartBookViewModel.self) {
-                            return CartBookViewModel(book: $0)
+                          destinationType: LibraryViewController.self,
+                          meta: LibraryBookViewModel.self) {
+                            return LibraryBookViewModel(book: $0)
             },
             
             InjectionRule(injectable: AnyBooksViewModel.self,
@@ -34,15 +34,15 @@ class ProductionInjectionPreset : CommonInjectionPreset {
             },
             
             InjectionRule(injectable: AnyBooksViewModel.self,
-                          destinationType: CartViewController.self,
-                          meta: CartBooksViewModel.self) {
-                            return CartBooksViewModel()
+                          destinationType: LibraryViewController.self,
+                          meta: LibraryBooksViewModel.self) {
+                            return LibraryBooksViewModel()
             },
             InjectionRule(injectable: AnyBooksViewModel.self,
                           targetType: [Book].self,
-                          destinationType: CartViewController.self,
-                          meta: CartBooksViewModel.self) {
-                            return CartBooksViewModel(books: $0)
+                          destinationType: LibraryViewController.self,
+                          meta: LibraryBooksViewModel.self) {
+                            return LibraryBooksViewModel(books: $0)
             }
         ]
     }

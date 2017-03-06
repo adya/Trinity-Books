@@ -1,3 +1,3 @@
-struct Cart {
+struct Library {
     var books : [Book] = []
 }
