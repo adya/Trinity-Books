@@ -16,9 +16,9 @@ public class Injector {
     fileprivate static let TAG = "Injector"
     
     /// Internal property to store configured injection rules.
-    fileprivate static var rules : [String : [String : InjectionRule]] = [:]
+    fileprivate static var rules : [String : [String : [String : InjectionRule]]] = [:]
     
-    fileprivate static var cache : [String : [String : Any]] = [:]
+    fileprivate static var cache : [String : [String : [String : Any]]] = [:]
     
     /// Replaces existing `InjectionRule`s with specified in the preset.
     /// - Parameter preset: An array of rules to be set.
@@ -37,64 +37,95 @@ public class Injector {
     public static func addInjectionRule(_ rule : InjectionRule) {
         let protocolType = String(describing: rule.protocolType)
         let targetType = String(describing: rule.targetType)
-        // Either add to existing sub-dictionary
-        if self.rules[protocolType] != nil {
-            self.rules[protocolType]?[targetType] = rule
-        } else {
-            self.rules[protocolType] = [targetType : rule]
+        let destinationType = String(describing: rule.destinationType)
+        
+        // Either add to existing sub-dictionary or create new one
+        guard self.rules[protocolType] != nil else {
+            self.rules[protocolType] = [targetType : [destinationType : rule]]
+            return
         }
+        
+        guard self.rules[protocolType]?[targetType] != nil else {
+            self.rules[protocolType]?[targetType] = [destinationType : rule]
+            return
+        }
+        
+        self.rules[protocolType]?[targetType]?[destinationType] = rule
+    }
+    
+    /**
+     Injects concrete type conformed to target injectable type.
+     - Parameter injectable: Protocol to which injected instance conforms.
+     - Parameter with parameter: Custom parameter to be used during injection.
+     - Parameter for sender: Type of the injection target.
+     
+     - Throws:
+         * InjectionError.UndefinedInjectionError
+         * InjectionError.ParameterCastingError
+     */
+    public static func inject<InjectableType : Any> (_ injectable : InjectableType.Type, with parameter: Any? = nil, for sender: Any.Type) throws -> InjectableType {
+        let target : Any.Type = parameter != nil ? type(of: parameter!) : Any.Type.self
+        
+        let protocolType = String(describing: injectable)
+        let targetType = String(describing: target)
+        let destinationType = String(describing: sender)
+        let defaultType = String(describing: Any.Type.self)
+        
+        // get rules for specific target or default
+        // get rule for specific destination or default
+        guard let targetRules = self.rules[protocolType]?[targetType] ?? self.rules[protocolType]?[defaultType],
+              let rule = targetRules[destinationType] ?? targetRules[defaultType]
+            else {
+            print("\(TAG): Didn't find any rule suitable for injection of '\(protocolType)' with target '\(targetType)' for '\(destinationType)'.")
+            throw InjectionError.undefinedInjectionError
+        }
+        
+        if rule.once,
+            let targetCache = self.cache[protocolType]?[targetType] ?? self.cache[protocolType]?[defaultType],
+            let cached = (targetCache[destinationType] ?? targetCache[defaultType] as Any) as? InjectableType {
+                print("\(TAG): Restored cached '\(protocolType)' with '\(type(of: cached))'.")
+                return cached
+        }
+        
+        guard let injected = try rule.injection(parameter) as? InjectableType else {
+            print("\(TAG): '\(protocolType)' injection failed.")
+            throw InjectionError.undefinedInjectionError
+        }
+        print("\(TAG): Successfully injected '\(protocolType)' with '\(type(of: injected))'.")
+        if rule.once {
+            if self.cache[protocolType] == nil {
+                self.cache[protocolType] = [targetType : [destinationType : injected]]
+            } else if self.cache[protocolType]?[targetType] == nil {
+                self.cache[protocolType]?[targetType] = [destinationType : injected]
+            } else {
+                self.cache[protocolType]?[targetType]?[destinationType] = injected
+            }
+        }
+        return injected
     }
     
     /**
      Injects concrete type conformed to target injectable type.
      - Parameter injectable: Protocol to which injected instance conforms.
      - Parameter parameter: Custom parameter to be used during injection.
-     - Parameter InjectableType: Type of the `injectable`.
+     - Parameter for sender: Injection target.
      
      - Throws:
-         * InjectionError.UndefinedInjectionError
-         * InjectionError.ParameterCastingError
+     * InjectionError.UndefinedInjectionError
+     * InjectionError.ParameterCastingError
      */
-    public static func inject<InjectableType : Any> (_ injectable : InjectableType.Type, with parameter: Any? = nil) throws -> InjectableType {
-        let target : Any.Type // infer target type from given parameter. By default injection rules applied to Any.
-        if let param = parameter {
-            target = type(of: param)
-        } else {
-            target = Any.Type.self
-        }
-        let protocolType = "\(injectable)"
-        let targetType = "\(target)"
-        
-        guard let rule = self.rules[protocolType]?[targetType] else {
-            print("\(TAG): Didn't find any rule suitable for injection of '\(injectable)' for target '\(target)'.")
-            throw InjectionError.undefinedInjectionError
-        }
-        
-        if rule.once, let cached = self.cache[protocolType]?[targetType] as? InjectableType {
-            print("\(TAG): Restored cached '\(type(of: injectable))' with '\(type(of: cached))'.")
-            return cached
-        }
-        
-        guard let injected = try rule.injection(parameter) as? InjectableType else {
-            print("\(TAG): '\(type(of: injectable))' injection failed.")
-            throw InjectionError.undefinedInjectionError
-        }
-        print("\(TAG): Successfully injected '\(type(of: injectable))' with '\(type(of: injected))'.")
-        if rule.once {
-            if self.cache[protocolType] != nil {
-                self.cache[protocolType]?[targetType] = injected
-            } else {
-                self.cache[protocolType] = [targetType : injected]
-            }
-        }
-        return injected
+    public static func inject<InjectableType : Any> (_ injectable : InjectableType.Type,
+                              with parameter: Any? = nil,
+                              for sender: Any? = nil) throws -> InjectableType {
+        let sender : Any.Type = sender != nil ? type(of: sender!) : Any.Type.self
+        return try inject(injectable, with: parameter, for: sender)
     }
     
     /// Prints all configured injection rules.
     public static func printConfiguration() {
         print("\(TAG): Configured injection rules: \n")
         self.rules
-            .flatMap{$0.1.values}
+            .flatMap{$0.1.values}.flatMap{$0.values}
             .sorted{"\($0.0.protocolType)".compare("\($0.1.protocolType)") == .orderedAscending }
             .forEach { print("\($0)")}
     }
@@ -115,11 +146,17 @@ public struct InjectionRule : CustomStringConvertible {
     
     fileprivate typealias InjectionClosure = ((Any?) throws -> Any)
     
-    /// Intenral holder for the protocol type.
+    /// Intenral holder for the type of a protocol being injected.
     fileprivate let protocolType : Any.Type
     
     /// Internal holder for the specific target type of the injection.
     fileprivate let targetType : Any.Type
+    
+    /// Internal holder for the type of injection destination.
+    fileprivate let destinationType : Any.Type
+    
+    /// Metadata of the injection represents type of concrete object that will be injected.
+    private let meta : Any.Type?
     
     /// Indicates whether the injection should reuse object created before or not.
     fileprivate let once : Bool
@@ -128,34 +165,83 @@ public struct InjectionRule : CustomStringConvertible {
     fileprivate let injection : InjectionClosure
     
     public var description : String {
-        return "\(self.protocolType) [\(self.targetType)]"
+        var descr = "\(protocolType)"
+        if targetType != Any.Type.self { descr += " [\(self.targetType)]" }
+        if destinationType != Any.Type.self { descr += " -> \(self.destinationType)" }
+        if meta != nil { descr += " : \(meta!)" }
+        return descr
     }
     
-    fileprivate init(protocolType : Any.Type, targetType : Any.Type = Any.Type.self, once : Bool = false, injection : @escaping InjectionClosure) {
+    private init(protocolType: Any.Type,
+                   targetType: Any.Type = Any.Type.self,
+              destinationType: Any.Type = Any.Type.self,
+                         once: Bool = false,
+                         meta: Any.Type? = nil,
+                    injection: @escaping InjectionClosure) {
         self.protocolType = protocolType
         self.targetType = targetType
+        self.destinationType = destinationType
         self.once = once
         self.injection = injection
+        self.meta = meta
     }
     
     /// Initializes `InjectionRule` with specified target type and injection closure with paramter.
     /// - Parameter injectable: Target protocol type to which this rule will be applied.
     /// - Parameter once: Indicates whether the injection should reuse object created before or not.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
     /// - Parameter injection: A closure to which type instantiation is delegated.
     /// - Parameter InjectableType: Type of injectable which must confrom to general Injectable protocol.
-    /// - Parameter ParameterType: Type of the parameter which will be passed to the closure.
-    public init<InjectableType> (injectable : InjectableType.Type, once : Bool = false, injection : @escaping () throws -> InjectableType) {
-        self.init(protocolType: injectable, once: once) { _ in try injection() }
+    public init<InjectableType> (injectable: InjectableType.Type,
+                                       once: Bool = false,
+                                       meta: Any.Type? = nil,
+                                  injection: @escaping () throws -> InjectableType) {
+        
+        self.init(injectable: injectable,
+                  destinationType: Any.Type.self,
+                  once: once,
+                  meta: meta,
+                  injection: injection)
     }
     
     /// Initializes `InjectionRule` with specified target type and injection closure with paramter.
     /// - Parameter injectable: Target protocol type to which this rule will be applied.
+    /// - Parameter destinationType: Type of the injection destination object.
     /// - Parameter once: Indicates whether the injection should reuse object created before or not.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
     /// - Parameter injection: A closure to which type instantiation is delegated.
-    /// - Parameter InjectableType: Type of injectable which must confrom to general Injectable protocol.
-    /// - Parameter ParameterType: Type of the parameter which will be passed to the closure.
-    public init<InjectableType, TargetType> (injectable : InjectableType.Type, targetType : TargetType.Type, once : Bool = false, injection : @escaping (TargetType) throws -> InjectableType) {
-        self.init(protocolType: injectable, targetType: targetType, once: once) {
+    public init<InjectableType, DestinationType> (injectable: InjectableType.Type,
+                                             destinationType: DestinationType.Type,
+                                                        once: Bool = false,
+                                                        meta: Any.Type? = nil,
+                                                   injection: @escaping () throws -> InjectableType) {
+        
+        self.init(protocolType: injectable,
+                  destinationType: destinationType,
+                  once: once,
+                  meta: meta) { _ in try injection() }
+    }
+    
+    /// Initializes `InjectionRule` with specified target type and injection closure with paramter.
+    /// - Parameter injectable: Target protocol type to which this rule will be applied.
+    /// - Parameter targetType: Type of the parameter which will be passed to the closure.
+    /// - Parameter destinationType: Type of the injection destination object.
+    /// - Parameter once: Indicates whether the injection should reuse object created before or not.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
+    /// - Parameter injection: A closure to which type instantiation is delegated.
+    public init<InjectableType, TargetType, DestinationType> (
+                    injectable: InjectableType.Type,
+                    targetType: TargetType.Type,
+               destinationType: DestinationType.Type,
+                          once: Bool = false,
+                          meta: Any.Type? = nil,
+                     injection: @escaping (TargetType) throws -> InjectableType) {
+        
+        self.init(protocolType: injectable,
+                  targetType: targetType,
+                  destinationType: destinationType,
+                  once: once,
+                  meta: meta) {
             guard let parameter = $0 else {
                 print("\(Injector.TAG): Unexpected nil parameter while injecting '\(type(of: injectable))'. Expected '\(TargetType.Type.self)'.")
                 throw InjectionError.parameterCastingError
@@ -168,13 +254,57 @@ public struct InjectionRule : CustomStringConvertible {
         }
     }
     
+    /// Initializes `InjectionRule` with specified target type and injection closure with paramter.
+    /// - Parameter injectable: Target protocol type to which this rule will be applied.
+    /// - Parameter targetType: Type of the parameter which will be passed to the closure.
+    /// - Parameter once: Indicates whether the injection should reuse object created before or not.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
+    /// - Parameter injection: A closure to which type instantiation is delegated.
+    public init<InjectableType, TargetType> (
+        injectable: InjectableType.Type,
+        targetType: TargetType.Type,
+              once: Bool = false,
+              meta: Any.Type? = nil,
+         injection: @escaping (TargetType) throws -> InjectableType) {
+        
+        self.init(injectable: injectable,
+                  targetType: targetType,
+                  destinationType: Any.Type.self,
+                  once: once,
+                  meta: meta,
+                  injection: injection)
+    }
+
+    
     /// Initializes `InjectionRule` with specified target type and injection closure without parameters.
     /// - Attention: This type of injection will use a single instance to inject it wherever it's requested. (Applicable to classes, since value types will be copied during injection).
     /// - Parameter injectable: Target protocol type to which this rule will be applied.
-    /// - Parameter injection: A closure to which type instantiation is delegated.
-    /// - Parameter InjectableType: Type of injectable which must confrom to general Injectable protocol.
-    public init<InjectableType> (injectable : InjectableType.Type, injected : @autoclosure @escaping () throws -> InjectableType) {
-        self.init(protocolType: injectable, once: true) { _ in return try injected() }
+    /// - Parameter destinationType: Type of the injection destination object.
+    /// - Parameter injected: A closure to which type instantiation is delegated.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
+    public init<InjectableType, DestinationType> (
+          injectable: InjectableType.Type,
+     destinationType: DestinationType.Type,
+            injected: @autoclosure @escaping () throws -> InjectableType,
+                meta: Any.Type? = nil) {
+        self.init(protocolType: injectable,
+                  once: true,
+                  meta: meta) { _ in return try injected() }
+    }
+    
+    /// Initializes `InjectionRule` with specified target type and injection closure without parameters.
+    /// - Attention: This type of injection will use a single instance to inject it wherever it's requested. (Applicable to classes, since value types will be copied during injection).
+    /// - Parameter injectable: Target protocol type to which this rule will be applied.
+    /// - Parameter injected: A closure to which type instantiation is delegated.
+    /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
+    public init<InjectableType> (
+          injectable: InjectableType.Type,
+            injected: @autoclosure @escaping () throws -> InjectableType,
+                meta: Any.Type? = nil) {
+        self.init(injectable: injectable,
+                  destinationType: Any.Type.self,
+                  injected: injected,
+                  meta: meta)
     }
 }
 
