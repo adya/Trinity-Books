@@ -3,6 +3,7 @@ class ProductionInjectionPreset : CommonInjectionPreset {
     override init() {
         super.init()
         rules += viewModels
+        rules += managers
     }
     
     var viewModels : [InjectionRule] {
@@ -44,6 +45,14 @@ class ProductionInjectionPreset : CommonInjectionPreset {
                           meta: LibraryBooksViewModel.self) {
                             return LibraryBooksViewModel(books: $0)
             }
+        ]
+    }
+    
+    var managers : [InjectionRule] {
+        return [
+            InjectionRule(injectable: AnyLibraryManager.self,
+                          meta: UserDefaultsLibraryManager.self,
+                          injected: UserDefaultsLibraryManager())
         ]
     }
 }

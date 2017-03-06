@@ -19,6 +19,14 @@
 		000A26301E6D6DDD004D53F2 /* DummyBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */; };
 		000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */; };
 		000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26351E6DC877004D53F2 /* SplashViewController.swift */; };
+		000A26381E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26371E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift */; };
+		000A26451E6DFB43004D53F2 /* Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A263E1E6DFB43004D53F2 /* Archivable.swift */; };
+		000A26461E6DFB43004D53F2 /* BaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A263F1E6DFB43004D53F2 /* BaseStorage.swift */; };
+		000A26471E6DFB43004D53F2 /* DictionaryStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26401E6DFB43004D53F2 /* DictionaryStorageProvider.swift */; };
+		000A26481E6DFB43004D53F2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26411E6DFB43004D53F2 /* Storage.swift */; };
+		000A26491E6DFB43004D53F2 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26421E6DFB43004D53F2 /* StorageProvider.swift */; };
+		000A264A1E6DFB43004D53F2 /* UbiquitousStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26431E6DFB43004D53F2 /* UbiquitousStorageProvider.swift */; };
+		000A264B1E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26441E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift */; };
 		001D4AF41E6C6DB3003F65C8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 001D4AF31E6C6DB3003F65C8 /* Podfile */; };
 		00696C8D1E6C9ACD00028AE7 /* TSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */; };
 		00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */; };
@@ -88,6 +96,14 @@
 		000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyBooksProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBooksViewController.swift; sourceTree = "<group>"; };
 		000A26351E6DC877004D53F2 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SplashViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		000A26371E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsLibraryManager.swift; sourceTree = "<group>"; };
+		000A263E1E6DFB43004D53F2 /* Archivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archivable.swift; sourceTree = "<group>"; };
+		000A263F1E6DFB43004D53F2 /* BaseStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStorage.swift; sourceTree = "<group>"; };
+		000A26401E6DFB43004D53F2 /* DictionaryStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryStorageProvider.swift; sourceTree = "<group>"; };
+		000A26411E6DFB43004D53F2 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		000A26421E6DFB43004D53F2 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
+		000A26431E6DFB43004D53F2 /* UbiquitousStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbiquitousStorageProvider.swift; sourceTree = "<group>"; };
+		000A26441E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProvider.swift; sourceTree = "<group>"; };
 		001D4AF31E6C6DB3003F65C8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSUtils.swift; sourceTree = "<group>"; };
 		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BookDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -178,6 +194,28 @@
 			name = "Model based";
 			sourceTree = "<group>";
 		};
+		000A263D1E6DFB43004D53F2 /* TSStorage */ = {
+			isa = PBXGroup;
+			children = (
+				000A263E1E6DFB43004D53F2 /* Archivable.swift */,
+				000A263F1E6DFB43004D53F2 /* BaseStorage.swift */,
+				000A26401E6DFB43004D53F2 /* DictionaryStorageProvider.swift */,
+				000A26411E6DFB43004D53F2 /* Storage.swift */,
+				000A26421E6DFB43004D53F2 /* StorageProvider.swift */,
+				000A26431E6DFB43004D53F2 /* UbiquitousStorageProvider.swift */,
+				000A26441E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift */,
+			);
+			path = TSStorage;
+			sourceTree = "<group>";
+		};
+		000A264C1E6E03BE004D53F2 /* Production */ = {
+			isa = PBXGroup;
+			children = (
+				000A26371E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift */,
+			);
+			name = Production;
+			sourceTree = "<group>";
+		};
 		007BA64F1E6CB44000860D6B /* Definitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,8 +296,9 @@
 		00FAF3411E6B559D0032E0E9 /* Data Managers Layer */ = {
 			isa = PBXGroup;
 			children = (
-				007BA6501E6CB47F00860D6B /* Dummies */,
 				007BA64F1E6CB44000860D6B /* Definitions */,
+				000A264C1E6E03BE004D53F2 /* Production */,
+				007BA6501E6CB47F00860D6B /* Dummies */,
 			);
 			path = "Data Managers Layer";
 			sourceTree = "<group>";
@@ -298,9 +337,9 @@
 		00FAF3471E6B559D0032E0E9 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				00FAF3A21E6B61110032E0E9 /* Definitions */,
 				000A26221E6CD06F004D53F2 /* Model based */,
 				00FAF3A31E6B61310032E0E9 /* Dummies */,
-				00FAF3A21E6B61110032E0E9 /* Definitions */,
 				00FAF3A61E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift */,
 			);
 			path = "View Models";
@@ -354,6 +393,7 @@
 				00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */,
 				00696C921E6CA67100028AE7 /* TSExtensions.swift */,
 				000A261C1E6CC8FF004D53F2 /* TSOperationError.swift */,
+				000A263D1E6DFB43004D53F2 /* TSStorage */,
 				00FAF3AD1E6B665E0032E0E9 /* TSArchitecture */,
 				00FAF3B01E6B665E0032E0E9 /* TSInjection */,
 				00FAF3B21E6B665E0032E0E9 /* TSUI */,
@@ -709,6 +749,7 @@
 				00696C911E6CA61400028AE7 /* Pallete.swift in Sources */,
 				00FAF39B1E6B5D480032E0E9 /* AnyBooksViewModel.swift in Sources */,
 				007BA6521E6CB70500860D6B /* AnyBooksProvider.swift in Sources */,
+				000A26491E6DFB43004D53F2 /* StorageProvider.swift in Sources */,
 				00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */,
 				00FAF3A11E6B60960032E0E9 /* CommonInjectionPreset.swift in Sources */,
 				000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */,
@@ -719,13 +760,19 @@
 				00FAF3B71E6B665E0032E0E9 /* TSArchitectureBase.swift in Sources */,
 				00FAF39D1E6B5D770032E0E9 /* AnyBookViewModel.swift in Sources */,
 				00696C931E6CA67100028AE7 /* TSExtensions.swift in Sources */,
+				000A26381E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift in Sources */,
 				00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */,
 				000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */,
+				000A264B1E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift in Sources */,
+				000A264A1E6DFB43004D53F2 /* UbiquitousStorageProvider.swift in Sources */,
+				000A26471E6DFB43004D53F2 /* DictionaryStorageProvider.swift in Sources */,
 				00FAF3BB1E6B665E0032E0E9 /* TSViewEx.swift in Sources */,
 				000A261B1E6CC594004D53F2 /* AnyLibraryManager.swift in Sources */,
 				000A262E1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift in Sources */,
 				00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */,
 				00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */,
+				000A26481E6DFB43004D53F2 /* Storage.swift in Sources */,
+				000A26451E6DFB43004D53F2 /* Archivable.swift in Sources */,
 				000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */,
 				00FAF3AB1E6B65920032E0E9 /* DummyBooksViewModel.swift in Sources */,
 				00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */,
@@ -733,6 +780,7 @@
 				000A26241E6CD07F004D53F2 /* BookViewModel.swift in Sources */,
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
 				00FAF3A91E6B64A50032E0E9 /* DummyInjectionPreset.swift in Sources */,
+				000A26461E6DFB43004D53F2 /* BaseStorage.swift in Sources */,
 				00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */,
 				000A262C1E6CE665004D53F2 /* BooksViewModel.swift in Sources */,
 				00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */,

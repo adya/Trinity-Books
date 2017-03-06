@@ -2,7 +2,6 @@ class DummyInjectionPreset : CommonInjectionPreset {
 
     override init() {
         super.init()
-        // add rules here
         rules += viewModels
         rules += managers
     }
