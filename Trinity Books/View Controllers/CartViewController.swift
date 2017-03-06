@@ -1,6 +1,6 @@
 import UIKit
 
-class CartViewController: UIViewController {
+class CartViewController: BaseBooksViewController {
 
     fileprivate enum Segues : String {
         case toDetails = "segDetails"
@@ -9,7 +9,7 @@ class CartViewController: UIViewController {
     fileprivate let manager = try! Injector.inject(AnyCartManager.self)
     
     fileprivate var viewModel : AnyBooksViewModel!
-    fileprivate var selectedBook : IndexPath?
+    fileprivate var selectedBookCellIndex : IndexPath?
     
     @IBOutlet weak fileprivate var tvBooks: UITableView!
     
@@ -18,19 +18,35 @@ class CartViewController: UIViewController {
         viewModel = try! Injector.inject(AnyBooksViewModel.self, for: self)
         loadCart()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier, id == Segues.toDetails.rawValue, let controller = segue.destination as? BookDetailsViewController else {
             print("Unsupported segue")
             return
         }
         
-        guard let index = selectedBook.flatMap({bookIndex(at: $0)}),
+        guard let index = selectedBookCellIndex.flatMap({bookIndex(at: $0)}),
             let book = viewModel?.books?[index].book else {
                 print("Selection was not defined.")
                 return
         }
         controller.setBook(book)
-        controller.delegate = self
+    }
+    
+    override func bookHasBeenAdded(_ book: Book) {
+        guard let selectedBook = selectedBookCellIndex else {
+            print("Selected index was not set")
+            return
+        }
+        addBookViewModel(book: book, at: selectedBook)
+    }
+    
+    override func bookHasBeenRemoved(_ book: Book) {
+        guard let selectedBook = selectedBookCellIndex else {
+            print("Selected index was not set")
+            return
+        }
+        removeBookViewModel(at: selectedBook)
     }
     
     func setCart(_ cart: Cart) {
@@ -52,13 +68,13 @@ private extension CartViewController {
     }
     
     func addBookViewModel(book: Book, at indexPath: IndexPath) {
-        viewModel.books?.insert(try! Injector.inject(AnyBookViewModel.self, with: book, for: self), at: indexPath.row)
+        let index = bookIndex(at: indexPath)
+        viewModel.books?.insert(try! Injector.inject(AnyBookViewModel.self, with: book, for: self), at: index)
         if hasBooks {
             tvBooks.insertRows(at: [indexPath], with: .automatic)
         } else {
             tvBooks.reloadRows(at: [indexPath], with: .automatic)
         }
-        
     }
 }
 
@@ -97,25 +113,6 @@ private extension CartViewController {
     }
 }
 
-// MARK: - CartEditorDelegate
-extension CartViewController : CartEditorDelegate {
-    func bookHasBeenAdded(_ book: Book) {
-        guard let selectedBook = selectedBook else {
-            print("Selected index was not set")
-            return
-        }
-        addBookViewModel(book: book, at: selectedBook)
-    }
-    
-    func bookHasBeenRemoved(_ book: Book) {
-        guard let selectedBook = selectedBook else {
-            print("Selected index was not set")
-            return
-        }
-        removeBookViewModel(at: selectedBook)
-    }
-}
-
 // MARK: - Controller
 private extension CartViewController {
     @IBAction func actionRefresh(_ sender: UIButton) {
@@ -131,15 +128,23 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
         return viewModel.books?.count ?? 0 > 0
     }
     
+    /// Returns an index of the book, considering additional loading cell.
+    /// - Parameter indexPath: IndexPath of a book cell.
     fileprivate func bookIndex(at indexPath: IndexPath) -> Int {
         return viewModel.isLoading ? indexPath.row - 1 : indexPath.row
     }
     
-    fileprivate func isBookIndex(at indexPath: IndexPath) -> Bool {
-        return hasBooks && !isLoadingIndex(at: indexPath)
+    /// Returns indexPath of the book cell, considering additional loading cell.
+    /// - Parameter index: Index of the viewModel entry.
+    fileprivate func bookCellIndex(at index: Int) -> IndexPath {
+        return IndexPath(row: index + (viewModel.isLoading ? 1 : 0), section: 0)
     }
     
-    fileprivate func isLoadingIndex(at indexPath: IndexPath) -> Bool {
+    fileprivate func isBookCellIndex(at indexPath: IndexPath) -> Bool {
+        return hasBooks && (!viewModel.isLoading || indexPath.row > 0)
+    }
+    
+    fileprivate func isLoadingCellIndex(at indexPath: IndexPath) -> Bool {
         return viewModel.isLoading && indexPath.row == 0
     }
     
@@ -148,11 +153,11 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return hasBooks ? isBookIndex(at: indexPath) ? BookCell.height : LoadingCell.height : MessageCell.height
+        return hasBooks ? isBookCellIndex(at: indexPath) ? BookCell.height : LoadingCell.height : MessageCell.height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isLoadingIndex(at: indexPath) {
+        if isLoadingCellIndex(at: indexPath) {
             let cell = tableView.dequeueReusableCell(of: LoadingCell.self)
             cell.configure(with: viewModel.loadingMessage)
             return cell
@@ -172,11 +177,11 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return isBookIndex(at: indexPath)
+        return isBookCellIndex(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedBook = indexPath
+        selectedBookCellIndex = indexPath
         performSegue(withIdentifier: Segues.toDetails.rawValue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -190,7 +195,7 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return isBookIndex(at: indexPath)
+        return isBookCellIndex(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {/* Stub to make cell editing working */}

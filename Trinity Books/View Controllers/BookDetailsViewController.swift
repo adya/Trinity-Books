@@ -1,20 +1,13 @@
 import UIKit
 
-protocol CartEditorDelegate {
-    func bookHasBeenAdded(_ book: Book)
-    func bookHasBeenRemoved(_ book: Book)
+enum BookDetailsNotification : String {
+    case bookAdded = "kNotificationBookAdded"
+    case bookRemoved = "kNotificationBookRemoved"
 }
-
-//enum BookDetailsNotification : String {
-//    case bookAdded = "kNotificationBookAdded"
-//    case bookRemoved = "kNotificationBookRemoved"
-//}
 
 class BookDetailsViewController: UIViewController {
     
     let manager = try! Injector.inject(AnyCartManager.self)
-    
-    var delegate : CartEditorDelegate?
     
     func setBook(_ book : Book) {
         viewModel = try! Injector.inject(AnyBookViewModel.self, with: book)
@@ -53,7 +46,9 @@ private extension BookDetailsViewController {
             switch $0 {
             case let .success(updatedBook):
                 self.setBook(updatedBook)
-                self.delegate?.bookHasBeenAdded(updatedBook)
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: BookDetailsNotification.bookAdded.rawValue),
+                                                             object: updatedBook,
+                                                             userInfo: nil))
                 completion()
             case let .failure(error):
                 guard error != .invalidParameters else {
@@ -79,7 +74,9 @@ private extension BookDetailsViewController {
             case let .success(updatedBook):
                 
                 self.setBook(updatedBook)
-                self.delegate?.bookHasBeenRemoved(updatedBook)
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: BookDetailsNotification.bookRemoved.rawValue),
+                                                             object: updatedBook,
+                                                             userInfo: nil))
                 completion()
             case let .failure(error):
                 guard error != .invalidParameters else {
