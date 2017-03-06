@@ -2,10 +2,13 @@ import UIKit
 
 class BookDetailsViewController: UIViewController {
     
-   // let manager = try! Injector.inject(AnyCartManager.self)
+    let manager = try! Injector.inject(AnyCartManager.self)
     
     func setBook(_ book : Book) {
         viewModel = try! Injector.inject(AnyBookViewModel.self, with: book)
+        if isViewLoaded {
+            configure(with: viewModel)
+        }
     }
     
     fileprivate var viewModel : AnyBookViewModel!
@@ -15,6 +18,7 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak fileprivate var ivCover: UIImageView!
     @IBOutlet weak fileprivate var aiLoadingCover: UIActivityIndicatorView!
     @IBOutlet weak fileprivate var lAuthor: UILabel!
+    @IBOutlet weak fileprivate var aiAddingBook: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +29,53 @@ class BookDetailsViewController: UIViewController {
         configure(with: viewModel)
     }
    
+    fileprivate func showLoading() {
+        aiAddingBook.startAnimating()
+        bCart.isEnabled = false
+    }
+    
+    fileprivate func hideLoading(success: Bool) {
+        aiAddingBook.stopAnimating()
+        if !success { bCart.isEnabled = true }
+    }
+    
 }
 
 // MARK: - Interactor
 private extension BookDetailsViewController {
-    func addToCart(book: Book, completion: (Bool) -> Void) {
-        completion(true)
+    func addToCart(book: Book, completion: @escaping () -> Void) {
+        showLoading()
+        manager.performAddBook(book) {
+            switch $0 {
+            case let .success(updatedBook):
+                self.hideLoading(success: true)
+                self.setBook(updatedBook)
+                completion()
+            case let .failure(error):
+                guard error != .invalidParameters else {
+                    print("Book is already in the cart")
+                    return
+                }
+                
+                self.hideLoading(success: false)
+                
+                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your cart", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
+                    self.addToCart(book: book, completion: completion)
+                })
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in completion()})
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        completion()
     }
 }
 
 // MARK: - Controller
 private extension BookDetailsViewController {
     @IBAction func actionAddToCart(_ sender: UIButton) {
-        addToCart(book: viewModel.book) { _ in
-            navigationController?.popViewController(animated: true)
+        addToCart(book: viewModel.book) {
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

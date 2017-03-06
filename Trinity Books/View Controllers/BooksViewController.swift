@@ -54,8 +54,16 @@ class BooksViewController: UIViewController {
 // MARK: - TableView
 extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
 
-    private var hasBooks : Bool {
+    fileprivate var hasBooks : Bool {
         return viewModel.books?.count ?? 0 > 0
+    }
+    
+    fileprivate func bookIndex(at indexPath: IndexPath) -> Int {
+        return viewModel.isLoading ? indexPath.row - 1 : indexPath.row
+    }
+    
+    fileprivate func isBookIndex(at indexPath: IndexPath) -> Bool {
+        return hasBooks && (!viewModel.isLoading || indexPath.row > 0)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,16 +71,16 @@ extension BooksViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return hasBooks ? !viewModel.isLoading ? BookCell.height : MessageCell.height : MessageCell.height
+        return hasBooks ? isBookIndex(at: indexPath) ? BookCell.height : LoadingCell.height : MessageCell.height
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.isLoading && indexPath.row == 0 {
+        if !isBookIndex(at: indexPath) {
             let cell = tableView.dequeueReusableCell(of: LoadingCell.self)
             cell.configure(with: viewModel.loadingMessage)
             return cell
         } else if hasBooks {
-            let index = viewModel.isLoading ? indexPath.row - 1 : indexPath.row
+            let index = bookIndex(at: indexPath)
             
             let cell = tableView.dequeueReusableCell(of: BookCell.self)
             if let bookViewModel = viewModel.books?[index] {

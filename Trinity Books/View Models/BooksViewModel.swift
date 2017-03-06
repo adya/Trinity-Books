@@ -1,5 +1,5 @@
 struct BooksViewModel : AnyBooksViewModel {
-    let books: [AnyBookViewModel]?
+    var books: [AnyBookViewModel]?
     
     let emptyMessage: AnyMessageCellDataSource
     

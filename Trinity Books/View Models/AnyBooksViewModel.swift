@@ -1,5 +1,5 @@
 protocol AnyBooksViewModel {
-    var books : [AnyBookViewModel]? {get}
+    var books : [AnyBookViewModel]? {get set}
     
     var emptyMessage : AnyMessageCellDataSource {get}
     var loadingMessage: AnyMessageCellDataSource {get}

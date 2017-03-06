@@ -1,11 +1,11 @@
 struct CartBooksViewModel : AnyBooksViewModel {
-    let books: [AnyBookViewModel]?
+    var books: [AnyBookViewModel]?
     
     let emptyMessage = try! Injector.inject(AnyMessageCellDataSource.self,
                                      with: "You haven't added any books yet.")
     
     let loadingMessage = try! Injector.inject(AnyMessageCellDataSource.self,
-                                       with: "Searching...")
+                                       with: "Loading...")
     
     var isLoading: Bool = false
     

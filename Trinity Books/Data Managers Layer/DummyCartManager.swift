@@ -10,22 +10,26 @@ class DummyCartManager : AnyCartManager {
         }
     }
     
-    func performAddBook(_ book: Book, callback: @escaping (AnyOperationResult) -> Void) {
+    func performAddBook(_ book: Book, callback: @escaping (OperationResult<Book>) -> Void) {
         guard cart?.books[book] == nil else {
             callback(.failure(.invalidParameters))
             return
         }
+        var book = book
+        book.inLibrary = true
         cart?.books.append(book)
-        callback(.success)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            callback(.success(book))
+        }
     }
     
-    func performRemoveBook(_ book: Book, callback: @escaping (AnyOperationResult) -> Void) {
+    func performRemoveBook(_ book: Book, callback: ((AnyOperationResult) -> Void)?) {
         guard cart?.books[book] == nil else {
-            callback(.failure(.invalidParameters))
+            callback?(.failure(.invalidParameters))
             return
         }
         cart?.books[book] = nil
-        callback(.success)
+        callback?(.success)
     }
 }
 
