@@ -9,7 +9,7 @@ class CartViewController: UIViewController {
     fileprivate let manager = try! Injector.inject(AnyCartManager.self)
     
     fileprivate var viewModel : AnyBooksViewModel!
-    fileprivate var selectedBook : Int?
+    fileprivate var selectedBook : IndexPath?
     
     @IBOutlet weak fileprivate var tvBooks: UITableView!
     
@@ -18,55 +18,47 @@ class CartViewController: UIViewController {
         viewModel = try! Injector.inject(AnyBooksViewModel.self, for: self)
         loadCart()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier, id == Segues.toDetails.rawValue, let controller = segue.destination as? BookDetailsViewController else {
             print("Unsupported segue")
             return
         }
         
-        guard let selectedBook = selectedBook,
-            let book = viewModel?.books?[selectedBook].book else {
+        guard let index = selectedBook.flatMap({bookIndex(at: $0)}),
+            let book = viewModel?.books?[index].book else {
                 print("Selection was not defined.")
                 return
         }
-        self.selectedBook = nil
         controller.setBook(book)
+        controller.delegate = self
     }
     
     func setCart(_ cart: Cart) {
         viewModel = try! Injector.inject(AnyBooksViewModel.self, with: cart.books, for: self)
         tvBooks.reloadData()
     }
-    
-    func showLoading() {
-        guard !viewModel.isLoading else {
-            return
-        }
-        viewModel.isLoading = true
-        let indexPath = [IndexPath(row: 0, section: 0)]
+}
+
+// MARK: - Presenter?
+private extension CartViewController {
+    func removeBookViewModel(at indexPath: IndexPath) {
+        let index = bookIndex(at: indexPath)
+        viewModel.books?.remove(at: index)
         if hasBooks {
-            tvBooks.insertRows(at: indexPath, with: .top)
+            tvBooks.deleteRows(at: [indexPath], with: .automatic)
         } else {
-            tvBooks.reloadRows(at: indexPath, with: .fade)
+            tvBooks.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
-    func hideLoading() {
-        guard viewModel.isLoading else {
-            return
-        }
-        viewModel.isLoading = false
-        let indexPath = [IndexPath(row: 0, section: 0)]
+    func addBookViewModel(book: Book, at indexPath: IndexPath) {
+        viewModel.books?.insert(try! Injector.inject(AnyBookViewModel.self, with: book, for: self), at: indexPath.row)
         if hasBooks {
-            tvBooks.deleteRows(at: indexPath, with: .top)
+            tvBooks.insertRows(at: [indexPath], with: .automatic)
         } else {
-            tvBooks.reloadRows(at: indexPath, with: .fade)
+            tvBooks.reloadRows(at: [indexPath], with: .automatic)
         }
+        
     }
 }
 
@@ -101,12 +93,26 @@ private extension CartViewController {
         } else {
             print("Failed to remove product")
         }
-        viewModel.books?.remove(at: index)
-        if hasBooks {
-            tvBooks.deleteRows(at: [indexPath], with: .automatic)
-        } else {
-            tvBooks.reloadRows(at: [indexPath], with: .automatic)
+        removeBookViewModel(at: indexPath)
+    }
+}
+
+// MARK: - CartEditorDelegate
+extension CartViewController : CartEditorDelegate {
+    func bookHasBeenAdded(_ book: Book) {
+        guard let selectedBook = selectedBook else {
+            print("Selected index was not set")
+            return
         }
+        addBookViewModel(book: book, at: selectedBook)
+    }
+    
+    func bookHasBeenRemoved(_ book: Book) {
+        guard let selectedBook = selectedBook else {
+            print("Selected index was not set")
+            return
+        }
+        removeBookViewModel(at: selectedBook)
     }
 }
 
@@ -118,7 +124,7 @@ private extension CartViewController {
 
 }
 
-// MARK: - TableView
+// MARK: - TableView (Presenter & Controller)
 extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     
     fileprivate var hasBooks : Bool {
@@ -170,7 +176,7 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedBook = bookIndex(at: indexPath)
+        selectedBook = indexPath
         performSegue(withIdentifier: Segues.toDetails.rawValue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -187,5 +193,35 @@ extension CartViewController : UITableViewDataSource, UITableViewDelegate {
         return isBookIndex(at: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {/* Stub to make cell editing working */ }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {/* Stub to make cell editing working */}
+}
+
+// MARK: - Presenter
+private extension CartViewController {
+    func showLoading() {
+        guard !viewModel.isLoading else {
+            return
+        }
+        viewModel.isLoading = true
+        let indexPath = [IndexPath(row: 0, section: 0)]
+        if hasBooks {
+            tvBooks.insertRows(at: indexPath, with: .top)
+        } else {
+            tvBooks.reloadRows(at: indexPath, with: .fade)
+        }
+    }
+    
+    func hideLoading() {
+        guard viewModel.isLoading else {
+            return
+        }
+        viewModel.isLoading = false
+        let indexPath = [IndexPath(row: 0, section: 0)]
+        if hasBooks {
+            tvBooks.deleteRows(at: indexPath, with: .top)
+        } else {
+            tvBooks.reloadRows(at: indexPath, with: .fade)
+        }
+    }
+
 }

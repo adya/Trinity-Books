@@ -1,8 +1,20 @@
 import UIKit
 
+protocol CartEditorDelegate {
+    func bookHasBeenAdded(_ book: Book)
+    func bookHasBeenRemoved(_ book: Book)
+}
+
+//enum BookDetailsNotification : String {
+//    case bookAdded = "kNotificationBookAdded"
+//    case bookRemoved = "kNotificationBookRemoved"
+//}
+
 class BookDetailsViewController: UIViewController {
     
     let manager = try! Injector.inject(AnyCartManager.self)
+    
+    var delegate : CartEditorDelegate?
     
     func setBook(_ book : Book) {
         viewModel = try! Injector.inject(AnyBookViewModel.self, with: book)
@@ -29,15 +41,6 @@ class BookDetailsViewController: UIViewController {
         configure(with: viewModel)
     }
    
-    fileprivate func showLoading() {
-        aiAddingBook.startAnimating()
-        bCart.isEnabled = false
-    }
-    
-    fileprivate func hideLoading(success: Bool) {
-        aiAddingBook.stopAnimating()
-        if !success { bCart.isEnabled = true }
-    }
     
 }
 
@@ -46,10 +49,11 @@ private extension BookDetailsViewController {
     func addToCart(book: Book, completion: @escaping () -> Void) {
         showLoading()
         manager.performAddBook(book) {
+            self.hideLoading()
             switch $0 {
             case let .success(updatedBook):
-                self.hideLoading(success: true)
                 self.setBook(updatedBook)
+                self.delegate?.bookHasBeenAdded(updatedBook)
                 completion()
             case let .failure(error):
                 guard error != .invalidParameters else {
@@ -57,9 +61,7 @@ private extension BookDetailsViewController {
                     return
                 }
                 
-                self.hideLoading(success: false)
-                
-                let alert = UIAlertController(title: "Trinity Books", message: "Failed to load your cart", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Trinity Books", message: "Failed to add '\(book.title)' to your cart", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
                     self.addToCart(book: book, completion: completion)
                 })
@@ -67,15 +69,46 @@ private extension BookDetailsViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
-        completion()
+    }
+    
+    func removeBook(book: Book, completion: @escaping () -> Void) {
+        showLoading()
+        manager.performRemoveBook(book) {
+            self.hideLoading()
+            switch $0 {
+            case let .success(updatedBook):
+                
+                self.setBook(updatedBook)
+                self.delegate?.bookHasBeenRemoved(updatedBook)
+                completion()
+            case let .failure(error):
+                guard error != .invalidParameters else {
+                    print("Book is not in the cart")
+                    return
+                }
+                
+                let alert = UIAlertController(title: "Trinity Books", message: "Failed to remove '\(book.title)' from your cart", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try Again", style: .default) { _ in
+                    self.removeBook(book: book, completion: completion)
+                })
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in completion()})
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
 
 // MARK: - Controller
 private extension BookDetailsViewController {
     @IBAction func actionAddToCart(_ sender: UIButton) {
-        addToCart(book: viewModel.book) {
-            self.navigationController?.popViewController(animated: true)
+        if !viewModel.inLibrary {
+            addToCart(book: viewModel.book) {
+                //let _ = self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            removeBook(book: viewModel.book) {
+                //let _ = self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }
@@ -86,7 +119,14 @@ extension BookDetailsViewController : Configurable {
         navigationItem.title = dataSource.title
         tvDescription.text = dataSource.description
         lAuthor.text = dataSource.author
-        bCart.isEnabled = !dataSource.inLibrary
+        
+        let title = dataSource.inLibrary ? "Remove from Cart" : "Add to Cart"
+        let color = dataSource.inLibrary ? Pallete.red : Pallete.main
+        
+        bCart.setTitle(title, for: .normal)
+        bCart.setTitleColor(color, for: .normal)
+        bCart.tintColor = color
+        aiAddingBook.color = color
         
         guard let url = URL(string: dataSource.coverUri) else {
             print("Invalid url for cover : \(dataSource.coverUri)")
@@ -97,6 +137,15 @@ extension BookDetailsViewController : Configurable {
             self.aiLoadingCover.stopAnimating()
             self.ivCover.image = $0.result.value
         }
-        
+    }
+    
+    fileprivate func showLoading() {
+        aiAddingBook.startAnimating()
+        bCart.isEnabled = false
+    }
+    
+    fileprivate func hideLoading() {
+        aiAddingBook.stopAnimating()
+        bCart.isEnabled = true
     }
 }

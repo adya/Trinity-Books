@@ -285,8 +285,8 @@ public struct InjectionRule : CustomStringConvertible {
     public init<InjectableType, DestinationType> (
           injectable: InjectableType.Type,
      destinationType: DestinationType.Type,
-            injected: @autoclosure @escaping () throws -> InjectableType,
-                meta: Any.Type? = nil) {
+                meta: Any.Type? = nil,
+            injected: @autoclosure @escaping () throws -> InjectableType) {
         self.init(protocolType: injectable,
                   once: true,
                   meta: meta) { _ in return try injected() }
@@ -299,12 +299,12 @@ public struct InjectionRule : CustomStringConvertible {
     /// - Parameter meta: Metadata of the injection represents type of the concrete object that will be injected.
     public init<InjectableType> (
           injectable: InjectableType.Type,
-            injected: @autoclosure @escaping () throws -> InjectableType,
-                meta: Any.Type? = nil) {
+                meta: Any.Type? = nil,
+            injected: @autoclosure @escaping () throws -> InjectableType) {
         self.init(injectable: injectable,
                   destinationType: Any.Type.self,
-                  injected: injected,
-                  meta: meta)
+                  meta: meta,
+                  injected: injected)
     }
 }
 
