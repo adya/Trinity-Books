@@ -27,13 +27,13 @@ class ProductionInjectionPreset : CommonInjectionPreset {
             },
             
             InjectionRule(injectable: AnyBooksViewModel.self,
-                          meta: BooksViewModel.self) {
-                            return BooksViewModel()
+                          meta: SearchBooksViewModel.self) {
+                            return SearchBooksViewModel()
             },
             InjectionRule(injectable: AnyBooksViewModel.self,
                           targetType: [Book].self,
-                          meta: BooksViewModel.self) {
-                            return BooksViewModel(books: $0)
+                          meta: SearchBooksViewModel.self) {
+                            return SearchBooksViewModel(books: $0)
             },
             
             InjectionRule(injectable: AnyBooksViewModel.self,

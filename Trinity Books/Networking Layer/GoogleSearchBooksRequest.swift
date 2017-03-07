@@ -9,11 +9,11 @@ struct GoogleSearchBooksRequest : Request {
             return nil
         }
         let param : [String : Any] = ["q" : term,
-                      "maxResults" : maxBooks,
-                      "orderBy" : "relevance",
-                      "startIndex" : page,
-                      "fields" : "items(id,volumeInfo(authors,description,imageLinks,subtitle,title)),totalItems",
-                      "key" : "AIzaSyAx7pvaZ4G5-fceV6v9TkeZCyIdRRjW9j0"
+                                      "maxResults" : maxBooks,
+                                      "orderBy" : "relevance",
+                                      "startIndex" : page * maxBooks,
+                                      "fields" : "items(id,volumeInfo(authors,description,imageLinks,subtitle,title)),totalItems",
+                                      "key" : "AIzaSyAx7pvaZ4G5-fceV6v9TkeZCyIdRRjW9j0"
                       
         ]
         parameters = param as [String : AnyObject]?

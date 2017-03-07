@@ -14,7 +14,7 @@
 		000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26251E6CD190004D53F2 /* DummyLibraryManager.swift */; };
 		000A26281E6CD1AD004D53F2 /* LibraryBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */; };
 		000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */; };
-		000A262C1E6CE665004D53F2 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262B1E6CE665004D53F2 /* BooksViewModel.swift */; };
+		000A262C1E6CE665004D53F2 /* SearchBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262B1E6CE665004D53F2 /* SearchBooksViewModel.swift */; };
 		000A262E1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */; };
 		000A26301E6D6DDD004D53F2 /* DummyBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */; };
 		000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */; };
@@ -55,7 +55,7 @@
 		0086CD341E6AB20600BF054E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0086CD321E6AB20600BF054E /* LaunchScreen.storyboard */; };
 		0086CD3F1E6AB20700BF054E /* Trinity_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD3E1E6AB20700BF054E /* Trinity_BooksTests.swift */; };
 		0086CD4A1E6AB20700BF054E /* Trinity_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */; };
-		00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */; };
+		00FAF3491E6B559D0032E0E9 /* SearchBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3451E6B559D0032E0E9 /* SearchBooksViewController.swift */; };
 		00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */; };
 		00FAF3541E6B59F10032E0E9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FAF3521E6B59F10032E0E9 /* MessageCell.xib */; };
 		00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FAF3551E6B5A000032E0E9 /* MessageCell.swift */; };
@@ -107,7 +107,7 @@
 		000A26251E6CD190004D53F2 /* DummyLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyLibraryManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryBookViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductionInjectionPreset.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		000A262B1E6CE665004D53F2 /* BooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		000A262B1E6CE665004D53F2 /* SearchBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBooksViewModel.swift; sourceTree = "<group>"; };
 		000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryBooksViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A262F1E6D6DDD004D53F2 /* DummyBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DummyBooksProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBooksViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		0086CD451E6AB20700BF054E /* Trinity BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trinity BooksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0086CD491E6AB20700BF054E /* Trinity_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trinity_BooksUITests.swift; sourceTree = "<group>"; };
 		0086CD4B1E6AB20700BF054E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BooksViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00FAF3451E6B559D0032E0E9 /* SearchBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SearchBooksViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LibraryViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00FAF3531E6B59F10032E0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Trinity Books/Base.lproj/MessageCell.xib"; sourceTree = SOURCE_ROOT; };
 		00FAF3551E6B5A000032E0E9 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 			children = (
 				000A26231E6CD07F004D53F2 /* BookViewModel.swift */,
 				000A26271E6CD1AD004D53F2 /* LibraryBookViewModel.swift */,
-				000A262B1E6CE665004D53F2 /* BooksViewModel.swift */,
+				000A262B1E6CE665004D53F2 /* SearchBooksViewModel.swift */,
 				000A262D1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift */,
 			);
 			name = "Model based";
@@ -388,7 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				000A26311E6D92EF004D53F2 /* BaseBooksViewController.swift */,
-				00FAF3451E6B559D0032E0E9 /* BooksViewController.swift */,
+				00FAF3451E6B559D0032E0E9 /* SearchBooksViewController.swift */,
 				00FAF3461E6B559D0032E0E9 /* LibraryViewController.swift */,
 				00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */,
 				000A26351E6DC877004D53F2 /* SplashViewController.swift */,
@@ -812,7 +812,7 @@
 				000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */,
 				000A261D1E6CC8FF004D53F2 /* TSOperationError.swift in Sources */,
 				000A26621E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift in Sources */,
-				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
+				00FAF3491E6B559D0032E0E9 /* SearchBooksViewController.swift in Sources */,
 				000A26661E6E0BE4004D53F2 /* AlamofireRequestManager.swift in Sources */,
 				00696C911E6CA61400028AE7 /* Pallete.swift in Sources */,
 				00FAF39B1E6B5D480032E0E9 /* AnyBooksViewModel.swift in Sources */,
@@ -862,7 +862,7 @@
 				000A26461E6DFB43004D53F2 /* BaseStorage.swift in Sources */,
 				000A26591E6E0A63004D53F2 /* MultipartRequest.swift in Sources */,
 				00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */,
-				000A262C1E6CE665004D53F2 /* BooksViewModel.swift in Sources */,
+				000A262C1E6CE665004D53F2 /* SearchBooksViewModel.swift in Sources */,
 				00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

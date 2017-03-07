@@ -6,8 +6,12 @@ struct LibraryBooksViewModel : AnyBooksViewModel {
     
     let loadingMessage = try! Injector.inject(AnyMessageCellDataSource.self,
                                        with: "Loading...")
+    // should not be used
+    let loadingMoreMessage = try! Injector.inject(AnyMessageCellDataSource.self, with: "Loading more...")
     
     var isLoading: Bool = false
+    
+    var hasMore: Bool = false
     
     init(books: [Book]? = nil) {
         self.books = books?.map{try! Injector.inject(AnyBookViewModel.self,

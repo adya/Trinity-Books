@@ -65,7 +65,7 @@ public class AlamofireRequestManager : RequestManager {
             
         }
         print("\(type(of: self)): Executing request: \(request)")
-        self.appendResponse(aRequest, request: request, type: type, completion: completion)
+        let _ = self.appendResponse(aRequest, request: request, type: type, completion: completion)
     }
     
     public required init(configuration: RequestManagerConfiguration) {

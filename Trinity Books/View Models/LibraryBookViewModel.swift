@@ -14,7 +14,7 @@ struct LibraryBookViewModel : AnyBookViewModel {
     }
     
     var coverUri: String? {
-        return book.coverUri
+        return book.coverUri ?? thumbnailUri
     }
     
     var thumbnailUri: String? {
