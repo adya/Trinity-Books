@@ -2,22 +2,23 @@ struct BookViewModel : AnyBookViewModel {
     let book: Book
     
     var title: String {
-        return book.title
+        return book.title + (book.subtitle != nil && !book.subtitle!.isEmpty ? ": \(book.subtitle!)" : "")
     }
     
     var author: String {
-        return book.author
+        return book.authors.joined(separator: ", ")
     }
+
     
     var description: String {
         return book.description
     }
     
-    var coverUri: String {
+    var coverUri: String? {
         return book.coverUri
     }
     
-    var thumbnailUri: String {
+    var thumbnailUri: String? {
         return book.thumbnailUri
     }
     

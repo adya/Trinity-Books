@@ -9,8 +9,9 @@ class SplashViewController: UIViewController {
     fileprivate let manager = try! Injector.inject(AnyLibraryManager.self)
     
     @IBOutlet weak fileprivate var aiLoading: UIActivityIndicatorView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadLibrary()
     }
 }

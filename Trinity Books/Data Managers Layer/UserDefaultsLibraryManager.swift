@@ -3,14 +3,15 @@ import Foundation
 class UserDefaultsLibraryManager: AnyLibraryManager {
     var library: Library?
     
-    func performLoadLibrary(callback: @escaping (OperationResult<Library>) -> Void) {
-        guard let dic = Storage.local[Keys.library.rawValue] as? [String : AnyObject],
-              let library = Library(fromArchive: dic) else {
-            callback(.failure(.invalidResponse))
+    func performLoadLibrary(_ callback: @escaping (OperationResult<Library>) -> Void) {
+        if let dic = Storage.local[Keys.library.rawValue] as? [String : AnyObject],
+              let library = Library(fromArchive: dic) {
+            self.library = library
+            callback(.success(library))
             return
         }
-        self.library = library
-        callback(.success(library))
+        library = Library(books: [])
+        callback(.success(library!))
     }
     
     func performAddBook(_ book: Book, callback: @escaping (OperationResult<Book>) -> Void) {
@@ -43,7 +44,7 @@ class UserDefaultsLibraryManager: AnyLibraryManager {
         } else {
             print("\(type(of: self)): Failed to save library)")
         }
-        NotificationCenter.default.post(name: Notification.Name(rawValue: LibraryNotification.bookAdded.rawValue), object: book)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: LibraryNotification.bookRemoved.rawValue), object: book)
         callback?(.success(book))
     }
 }

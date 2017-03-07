@@ -1,28 +1,40 @@
-struct Book : Identifiable {
-    let id: Int
+struct Book : Hashable {
+    let id: String
     let title : String
-    let author : String
+    let subtitle : String?
+    let authors : [String]
     let description : String
-    let coverUri : String
-    let thumbnailUri : String
+    let coverUri : String?
+    let thumbnailUri : String?
     var inLibrary : Bool
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
+}
+
+func == (first : Book, second : Book) -> Bool {
+    return first.hashValue == second.hashValue
 }
 
 extension Book : Archivable {
     init?(fromArchive archive: [String : AnyObject]) {
-        guard let id = archive[Keys.id.rawValue] as? Int,
+        guard let id = archive[Keys.id.rawValue] as? String,
             let title = archive[Keys.title.rawValue] as? String,
-        let author = archive[Keys.author.rawValue] as? String,
+        let authors = archive[Keys.authors.rawValue] as? [String],
         let description = archive[Keys.description.rawValue] as? String,
-        let coverUri = archive[Keys.coverUri.rawValue] as? String,
-        let thumbnailUri = archive[Keys.thumbnailUri.rawValue] as? String,
         let inLibrary = archive[Keys.inLibrary.rawValue] as? Bool
         else {
                 return nil
         }
+        let subtitle = archive[Keys.subtitle.rawValue] as? String
+        let coverUri = archive[Keys.coverUri.rawValue] as? String
+        let thumbnailUri = archive[Keys.thumbnailUri.rawValue] as? String
+        
         self.init(id: id,
                   title: title,
-                  author: author,
+                  subtitle: subtitle,
+                  authors: authors,
                   description: description,
                   coverUri: coverUri,
                   thumbnailUri: thumbnailUri,
@@ -30,22 +42,25 @@ extension Book : Archivable {
     }
     
     func archived() -> [String : AnyObject] {
-        return [
-            Keys.id.rawValue : id as AnyObject,
-            Keys.title.rawValue : title as AnyObject,
-            Keys.author.rawValue : author as AnyObject,
-            Keys.description.rawValue : description as AnyObject,
-            Keys.coverUri.rawValue : coverUri as AnyObject,
-            Keys.thumbnailUri.rawValue : thumbnailUri as AnyObject,
-            Keys.inLibrary.rawValue : inLibrary as AnyObject
+        var archive : [String : Any] = [
+            Keys.id.rawValue : id,
+            Keys.title.rawValue : title,
+            Keys.authors.rawValue : authors,
+            Keys.description.rawValue : description,
+            Keys.inLibrary.rawValue : inLibrary
         ]
+        archive[Keys.subtitle.rawValue] = subtitle
+        archive[Keys.thumbnailUri.rawValue] = thumbnailUri
+        archive[Keys.coverUri.rawValue] = coverUri
+        return archive as [String : AnyObject]
     }
 }
 
 private enum Keys : String {
     case id = "kId"
     case title = "kTitle"
-    case author = "kAuthor"
+    case subtitle = "kSubtitle"
+    case authors = "kAuthors"
     case description = "kDescription"
     case coverUri = "kCoverUri"
     case thumbnailUri = "kThumbnailUri"

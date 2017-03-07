@@ -46,6 +46,7 @@ class LibraryViewController: BaseBooksViewController {
     
     /// Updates list of books when it's changed
     override func bookHasBeenAdded(_ book: Book) {
+        super.bookHasBeenAdded(book)
         guard let index = viewModel.books?.count else {
             print("\(type(of: self)): Book wasn't found in viewModel.")
             return
@@ -55,6 +56,7 @@ class LibraryViewController: BaseBooksViewController {
     
     /// Updates list of books when it's changed
     override func bookHasBeenRemoved(_ book: Book) {
+        super.bookHasBeenRemoved(book)
         guard let index = findBook(book) else {
             print("\(type(of: self)): Book wasn't found in viewModel.")
             return

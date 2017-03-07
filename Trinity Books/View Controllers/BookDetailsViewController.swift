@@ -116,7 +116,8 @@ extension BookDetailsViewController : Configurable {
         bLibrary.backgroundColor = color
         aiAddingBook.color = color
         
-        guard let url = URL(string: dataSource.coverUri) else {
+        guard let coverUri = dataSource.coverUri,
+              let url = URL(string: coverUri) else {
             print("\(type(of: self)): Invalid url for cover : \(dataSource.coverUri)")
             return
         }

@@ -19,7 +19,8 @@ class BookCell: UITableViewCell, TableViewElement, Configurable {
         
         accessoryType = dataSource.inLibrary ? .checkmark : .none
         
-        guard let url = URL(string: dataSource.thumbnailUri) else {
+        guard let thumbnailUri = dataSource.thumbnailUri,
+            let url = URL(string: thumbnailUri) else {
             print("\(type(of: self)): Invalid url for cover : \(dataSource.thumbnailUri)")
             return
         }
@@ -46,7 +47,7 @@ class BookCell: UITableViewCell, TableViewElement, Configurable {
 
 protocol AnyBookCellDataSource {
     var title : String {get}
-    var thumbnailUri : String {get}
+    var thumbnailUri : String? {get}
     var author : String {get}
     var description : String {get}
     var inLibrary : Bool {get}

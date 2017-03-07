@@ -4,7 +4,7 @@ class DummyLibraryManager : AnyLibraryManager {
     
     var library: Library?
     
-    func performLoadLibrary(callback: @escaping ResultOperationCallback<Library>) {
+    func performLoadLibrary(_ callback: @escaping ResultOperationCallback<Library>) {
         library = dummy
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             callback(.success(self.library!))

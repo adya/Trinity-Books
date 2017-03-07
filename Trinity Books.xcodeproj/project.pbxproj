@@ -27,6 +27,22 @@
 		000A26491E6DFB43004D53F2 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26421E6DFB43004D53F2 /* StorageProvider.swift */; };
 		000A264A1E6DFB43004D53F2 /* UbiquitousStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26431E6DFB43004D53F2 /* UbiquitousStorageProvider.swift */; };
 		000A264B1E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26441E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift */; };
+		000A264E1E6E0594004D53F2 /* GoogleBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A264D1E6E0594004D53F2 /* GoogleBooksProvider.swift */; };
+		000A26581E6E0A63004D53F2 /* DataConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26501E6E0A63004D53F2 /* DataConverters.swift */; };
+		000A26591E6E0A63004D53F2 /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26511E6E0A63004D53F2 /* MultipartRequest.swift */; };
+		000A265A1E6E0A63004D53F2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26521E6E0A63004D53F2 /* Request.swift */; };
+		000A265B1E6E0A63004D53F2 /* RequestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26531E6E0A63004D53F2 /* RequestCall.swift */; };
+		000A265C1E6E0A63004D53F2 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26541E6E0A63004D53F2 /* RequestError.swift */; };
+		000A265D1E6E0A63004D53F2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26551E6E0A63004D53F2 /* RequestManager.swift */; };
+		000A265E1E6E0A63004D53F2 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26561E6E0A63004D53F2 /* Response.swift */; };
+		000A265F1E6E0A63004D53F2 /* ResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26571E6E0A63004D53F2 /* ResponseResult.swift */; };
+		000A26621E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26611E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift */; };
+		000A26661E6E0BE4004D53F2 /* AlamofireRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26651E6E0BE4004D53F2 /* AlamofireRequestManager.swift */; };
+		000A26681E6E0D38004D53F2 /* GoogleBooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26671E6E0D38004D53F2 /* GoogleBooksResponse.swift */; };
+		000A266A1E6E0DE5004D53F2 /* BooksPortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26691E6E0DE5004D53F2 /* BooksPortion.swift */; };
+		000A266C1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266B1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift */; };
+		000A266E1E6E12AA004D53F2 /* DataEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266D1E6E12AA004D53F2 /* DataEx.swift */; };
+		000A26701E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266F1E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift */; };
 		001D4AF41E6C6DB3003F65C8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 001D4AF31E6C6DB3003F65C8 /* Podfile */; };
 		00696C8D1E6C9ACD00028AE7 /* TSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */; };
 		00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */; };
@@ -104,6 +120,22 @@
 		000A26421E6DFB43004D53F2 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		000A26431E6DFB43004D53F2 /* UbiquitousStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbiquitousStorageProvider.swift; sourceTree = "<group>"; };
 		000A26441E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProvider.swift; sourceTree = "<group>"; };
+		000A264D1E6E0594004D53F2 /* GoogleBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleBooksProvider.swift; sourceTree = "<group>"; };
+		000A26501E6E0A63004D53F2 /* DataConverters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConverters.swift; sourceTree = "<group>"; };
+		000A26511E6E0A63004D53F2 /* MultipartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
+		000A26521E6E0A63004D53F2 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		000A26531E6E0A63004D53F2 /* RequestCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCall.swift; sourceTree = "<group>"; };
+		000A26541E6E0A63004D53F2 /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		000A26551E6E0A63004D53F2 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		000A26561E6E0A63004D53F2 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		000A26571E6E0A63004D53F2 /* ResponseResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseResult.swift; sourceTree = "<group>"; };
+		000A26611E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSearchBooksRequest.swift; sourceTree = "<group>"; };
+		000A26651E6E0BE4004D53F2 /* AlamofireRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireRequestManager.swift; path = ../AlamofireRequestManager.swift; sourceTree = "<group>"; };
+		000A26671E6E0D38004D53F2 /* GoogleBooksResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleBooksResponse.swift; sourceTree = "<group>"; };
+		000A26691E6E0DE5004D53F2 /* BooksPortion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksPortion.swift; sourceTree = "<group>"; };
+		000A266B1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleBookResponseConverter.swift; sourceTree = "<group>"; };
+		000A266D1E6E12AA004D53F2 /* DataEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEx.swift; sourceTree = "<group>"; };
+		000A266F1E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleRequestManagerConfiguration.swift; sourceTree = "<group>"; };
 		001D4AF31E6C6DB3003F65C8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSUtils.swift; sourceTree = "<group>"; };
 		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BookDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -212,8 +244,36 @@
 			isa = PBXGroup;
 			children = (
 				000A26371E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift */,
+				000A264D1E6E0594004D53F2 /* GoogleBooksProvider.swift */,
 			);
 			name = Production;
+			sourceTree = "<group>";
+		};
+		000A264F1E6E0A63004D53F2 /* TSNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				000A26501E6E0A63004D53F2 /* DataConverters.swift */,
+				000A26511E6E0A63004D53F2 /* MultipartRequest.swift */,
+				000A26521E6E0A63004D53F2 /* Request.swift */,
+				000A26531E6E0A63004D53F2 /* RequestCall.swift */,
+				000A26541E6E0A63004D53F2 /* RequestError.swift */,
+				000A26551E6E0A63004D53F2 /* RequestManager.swift */,
+				000A26561E6E0A63004D53F2 /* Response.swift */,
+				000A26571E6E0A63004D53F2 /* ResponseResult.swift */,
+				000A26651E6E0BE4004D53F2 /* AlamofireRequestManager.swift */,
+			);
+			path = TSNetworking;
+			sourceTree = "<group>";
+		};
+		000A26601E6E0AE2004D53F2 /* Networking Layer */ = {
+			isa = PBXGroup;
+			children = (
+				000A26611E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift */,
+				000A26671E6E0D38004D53F2 /* GoogleBooksResponse.swift */,
+				000A266B1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift */,
+				000A266F1E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift */,
+			);
+			path = "Networking Layer";
 			sourceTree = "<group>";
 		};
 		007BA64F1E6CB44000860D6B /* Definitions */ = {
@@ -261,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				00FAF3421E6B559D0032E0E9 /* Injection */,
+				000A26601E6E0AE2004D53F2 /* Networking Layer */,
 				00FAF3411E6B559D0032E0E9 /* Data Managers Layer */,
 				00FAF3431E6B559D0032E0E9 /* Models */,
 				00FAF3471E6B559D0032E0E9 /* View Models */,
@@ -318,6 +379,7 @@
 			children = (
 				00FAF39E1E6B5DD10032E0E9 /* Book.swift */,
 				000A261E1E6CC9BD004D53F2 /* Library.swift */,
+				000A26691E6E0DE5004D53F2 /* BooksPortion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -393,7 +455,9 @@
 				00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */,
 				00696C921E6CA67100028AE7 /* TSExtensions.swift */,
 				000A261C1E6CC8FF004D53F2 /* TSOperationError.swift */,
+				000A266D1E6E12AA004D53F2 /* DataEx.swift */,
 				000A263D1E6DFB43004D53F2 /* TSStorage */,
+				000A264F1E6E0A63004D53F2 /* TSNetworking */,
 				00FAF3AD1E6B665E0032E0E9 /* TSArchitecture */,
 				00FAF3B01E6B665E0032E0E9 /* TSInjection */,
 				00FAF3B21E6B665E0032E0E9 /* TSUI */,
@@ -740,12 +804,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				00FAF3A51E6B61490032E0E9 /* DummyBookViewModel.swift in Sources */,
+				000A265B1E6E0A63004D53F2 /* RequestCall.swift in Sources */,
+				000A26681E6E0D38004D53F2 /* GoogleBooksResponse.swift in Sources */,
 				00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */,
 				00FAF3B91E6B665E0032E0E9 /* TSButton.swift in Sources */,
 				000A261F1E6CC9BD004D53F2 /* Library.swift in Sources */,
 				000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */,
 				000A261D1E6CC8FF004D53F2 /* TSOperationError.swift in Sources */,
+				000A26621E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift in Sources */,
 				00FAF3491E6B559D0032E0E9 /* BooksViewController.swift in Sources */,
+				000A26661E6E0BE4004D53F2 /* AlamofireRequestManager.swift in Sources */,
 				00696C911E6CA61400028AE7 /* Pallete.swift in Sources */,
 				00FAF39B1E6B5D480032E0E9 /* AnyBooksViewModel.swift in Sources */,
 				007BA6521E6CB70500860D6B /* AnyBooksProvider.swift in Sources */,
@@ -753,6 +821,7 @@
 				00FAF3561E6B5A000032E0E9 /* MessageCell.swift in Sources */,
 				00FAF3A11E6B60960032E0E9 /* CommonInjectionPreset.swift in Sources */,
 				000A26321E6D92EF004D53F2 /* BaseBooksViewController.swift in Sources */,
+				000A265D1E6E0A63004D53F2 /* RequestManager.swift in Sources */,
 				000A26281E6CD1AD004D53F2 /* LibraryBookViewModel.swift in Sources */,
 				00FAF3A71E6B647A0032E0E9 /* SimpleMessageCellDataSource.swift in Sources */,
 				00FAF39F1E6B5DD10032E0E9 /* Book.swift in Sources */,
@@ -761,26 +830,37 @@
 				00FAF39D1E6B5D770032E0E9 /* AnyBookViewModel.swift in Sources */,
 				00696C931E6CA67100028AE7 /* TSExtensions.swift in Sources */,
 				000A26381E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift in Sources */,
+				000A26701E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift in Sources */,
 				00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */,
+				000A266C1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift in Sources */,
 				000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */,
 				000A264B1E6DFB43004D53F2 /* UserDefaultsStorageProvider.swift in Sources */,
+				000A265A1E6E0A63004D53F2 /* Request.swift in Sources */,
 				000A264A1E6DFB43004D53F2 /* UbiquitousStorageProvider.swift in Sources */,
 				000A26471E6DFB43004D53F2 /* DictionaryStorageProvider.swift in Sources */,
 				00FAF3BB1E6B665E0032E0E9 /* TSViewEx.swift in Sources */,
 				000A261B1E6CC594004D53F2 /* AnyLibraryManager.swift in Sources */,
 				000A262E1E6CE7D0004D53F2 /* LibraryBooksViewModel.swift in Sources */,
+				000A265F1E6E0A63004D53F2 /* ResponseResult.swift in Sources */,
+				000A265E1E6E0A63004D53F2 /* Response.swift in Sources */,
+				000A265C1E6E0A63004D53F2 /* RequestError.swift in Sources */,
 				00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */,
+				000A266A1E6E0DE5004D53F2 /* BooksPortion.swift in Sources */,
 				00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */,
+				000A264E1E6E0594004D53F2 /* GoogleBooksProvider.swift in Sources */,
 				000A26481E6DFB43004D53F2 /* Storage.swift in Sources */,
 				000A26451E6DFB43004D53F2 /* Archivable.swift in Sources */,
+				000A26581E6E0A63004D53F2 /* DataConverters.swift in Sources */,
 				000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */,
 				00FAF3AB1E6B65920032E0E9 /* DummyBooksViewModel.swift in Sources */,
 				00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */,
+				000A266E1E6E12AA004D53F2 /* DataEx.swift in Sources */,
 				00696C8D1E6C9ACD00028AE7 /* TSUtils.swift in Sources */,
 				000A26241E6CD07F004D53F2 /* BookViewModel.swift in Sources */,
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
 				00FAF3A91E6B64A50032E0E9 /* DummyInjectionPreset.swift in Sources */,
 				000A26461E6DFB43004D53F2 /* BaseStorage.swift in Sources */,
+				000A26591E6E0A63004D53F2 /* MultipartRequest.swift in Sources */,
 				00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */,
 				000A262C1E6CE665004D53F2 /* BooksViewModel.swift in Sources */,
 				00FAF3581E6B5A110032E0E9 /* LoadingCell.swift in Sources */,
