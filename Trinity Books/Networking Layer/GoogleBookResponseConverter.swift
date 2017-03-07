@@ -14,7 +14,14 @@ class GoogleBooksResponseConverter: ResponseConverter<Book> {
         let cover = coverImage(from: images)
         let thumbnail = thumbnailImage(from: images)
         
-        return Book(id: id, title: title, subtitle: subtitle, authors: authors, description: description, coverUri: cover, thumbnailUri: thumbnail, inLibrary: false)
+        return Book(id: id,
+                    title: title,
+                    subtitle: subtitle,
+                    authors: authors,
+                    description: description,
+                    coverUri: cover,
+                    thumbnailUri: thumbnail,
+                    inLibrary: false)
     }
     
     /// Defines priorities of available images to be used as Cover.

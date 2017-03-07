@@ -43,6 +43,11 @@
 		000A266C1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266B1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift */; };
 		000A266E1E6E12AA004D53F2 /* DataEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266D1E6E12AA004D53F2 /* DataEx.swift */; };
 		000A26701E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A266F1E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift */; };
+		000A269A1E6EBBCF004D53F2 /* library.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 000A26991E6EBBCF004D53F2 /* library.xcdatamodel */; };
+		000A269C1E6EBE78004D53F2 /* CoreDataLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A269B1E6EBE78004D53F2 /* CoreDataLibraryManager.swift */; };
+		000A26A01E6EE84F004D53F2 /* CoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A269F1E6EE84F004D53F2 /* CoreDataContextProvider.swift */; };
+		000A26A21E6EE881004D53F2 /* PersistentContainerCoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26A11E6EE881004D53F2 /* PersistentContainerCoreDataContextProvider.swift */; };
+		000A26A41E6EEA73004D53F2 /* OldCoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A26A31E6EEA73004D53F2 /* OldCoreDataContextProvider.swift */; };
 		001D4AF41E6C6DB3003F65C8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 001D4AF31E6C6DB3003F65C8 /* Podfile */; };
 		00696C8D1E6C9ACD00028AE7 /* TSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */; };
 		00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */; };
@@ -136,6 +141,11 @@
 		000A266B1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleBookResponseConverter.swift; sourceTree = "<group>"; };
 		000A266D1E6E12AA004D53F2 /* DataEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEx.swift; sourceTree = "<group>"; };
 		000A266F1E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleRequestManagerConfiguration.swift; sourceTree = "<group>"; };
+		000A26991E6EBBCF004D53F2 /* library.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = library.xcdatamodel; sourceTree = "<group>"; };
+		000A269B1E6EBE78004D53F2 /* CoreDataLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataLibraryManager.swift; sourceTree = "<group>"; };
+		000A269F1E6EE84F004D53F2 /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataContextProvider.swift; sourceTree = "<group>"; };
+		000A26A11E6EE881004D53F2 /* PersistentContainerCoreDataContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentContainerCoreDataContextProvider.swift; sourceTree = "<group>"; };
+		000A26A31E6EEA73004D53F2 /* OldCoreDataContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCoreDataContextProvider.swift; sourceTree = "<group>"; };
 		001D4AF31E6C6DB3003F65C8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		00696C8C1E6C9ACD00028AE7 /* TSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSUtils.swift; sourceTree = "<group>"; };
 		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BookDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -245,6 +255,9 @@
 			children = (
 				000A26371E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift */,
 				000A264D1E6E0594004D53F2 /* GoogleBooksProvider.swift */,
+				000A269B1E6EBE78004D53F2 /* CoreDataLibraryManager.swift */,
+				000A26A11E6EE881004D53F2 /* PersistentContainerCoreDataContextProvider.swift */,
+				000A26A31E6EEA73004D53F2 /* OldCoreDataContextProvider.swift */,
 			);
 			name = Production;
 			sourceTree = "<group>";
@@ -281,6 +294,7 @@
 			children = (
 				007BA6511E6CB70500860D6B /* AnyBooksProvider.swift */,
 				000A261A1E6CC594004D53F2 /* AnyLibraryManager.swift */,
+				000A269F1E6EE84F004D53F2 /* CoreDataContextProvider.swift */,
 			);
 			name = Definitions;
 			sourceTree = "<group>";
@@ -331,6 +345,7 @@
 				0086CD321E6AB20600BF054E /* LaunchScreen.storyboard */,
 				0086CD351E6AB20600BF054E /* Info.plist */,
 				001D4AF31E6C6DB3003F65C8 /* Podfile */,
+				000A26991E6EBBCF004D53F2 /* library.xcdatamodel */,
 				00696C901E6CA61400028AE7 /* Pallete.swift */,
 			);
 			path = "Trinity Books";
@@ -803,12 +818,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000A26A01E6EE84F004D53F2 /* CoreDataContextProvider.swift in Sources */,
 				00FAF3A51E6B61490032E0E9 /* DummyBookViewModel.swift in Sources */,
 				000A265B1E6E0A63004D53F2 /* RequestCall.swift in Sources */,
 				000A26681E6E0D38004D53F2 /* GoogleBooksResponse.swift in Sources */,
 				00FAF3621E6B5A4F0032E0E9 /* BookCell.swift in Sources */,
 				00FAF3B91E6B665E0032E0E9 /* TSButton.swift in Sources */,
 				000A261F1E6CC9BD004D53F2 /* Library.swift in Sources */,
+				000A26A41E6EEA73004D53F2 /* OldCoreDataContextProvider.swift in Sources */,
 				000A26261E6CD190004D53F2 /* DummyLibraryManager.swift in Sources */,
 				000A261D1E6CC8FF004D53F2 /* TSOperationError.swift in Sources */,
 				000A26621E6E0B00004D53F2 /* GoogleSearchBooksRequest.swift in Sources */,
@@ -847,8 +864,10 @@
 				00FAF3BA1E6B665E0032E0E9 /* TSCollectionsViewEx.swift in Sources */,
 				000A266A1E6E0DE5004D53F2 /* BooksPortion.swift in Sources */,
 				00FAF34A1E6B559D0032E0E9 /* LibraryViewController.swift in Sources */,
+				000A26A21E6EE881004D53F2 /* PersistentContainerCoreDataContextProvider.swift in Sources */,
 				000A264E1E6E0594004D53F2 /* GoogleBooksProvider.swift in Sources */,
 				000A26481E6DFB43004D53F2 /* Storage.swift in Sources */,
+				000A269C1E6EBE78004D53F2 /* CoreDataLibraryManager.swift in Sources */,
 				000A26451E6DFB43004D53F2 /* Archivable.swift in Sources */,
 				000A26581E6E0A63004D53F2 /* DataConverters.swift in Sources */,
 				000A262A1E6CE28C004D53F2 /* ProductionInjectionPreset.swift in Sources */,
@@ -860,6 +879,7 @@
 				0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */,
 				00FAF3A91E6B64A50032E0E9 /* DummyInjectionPreset.swift in Sources */,
 				000A26461E6DFB43004D53F2 /* BaseStorage.swift in Sources */,
+				000A269A1E6EBBCF004D53F2 /* library.xcdatamodel in Sources */,
 				000A26591E6E0A63004D53F2 /* MultipartRequest.swift in Sources */,
 				00FAF3B61E6B665E0032E0E9 /* Identifiable.swift in Sources */,
 				000A262C1E6CE665004D53F2 /* SearchBooksViewModel.swift in Sources */,

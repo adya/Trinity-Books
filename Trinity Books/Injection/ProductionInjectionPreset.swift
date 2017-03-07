@@ -58,11 +58,18 @@ class ProductionInjectionPreset : CommonInjectionPreset {
         return try! Injector.inject(RequestManagerConfiguration.self)
     }
     
+    private var contextProvider : CoreDataContextProvider {
+        return try! Injector.inject(CoreDataContextProvider.self)
+    }
+    
     var managers : [InjectionRule] {
         return [
+//            InjectionRule(injectable: AnyLibraryManager.self,
+//                          meta: UserDefaultsLibraryManager.self,
+//                          injected: UserDefaultsLibraryManager()),
             InjectionRule(injectable: AnyLibraryManager.self,
-                          meta: UserDefaultsLibraryManager.self,
-                          injected: UserDefaultsLibraryManager()),
+                          meta: CoreDataLibraryManager.self,
+                          injected: CoreDataLibraryManager(contextProvider: self.contextProvider)),
             InjectionRule(injectable: AnyBooksProvider.self,
                           meta: GoogleBooksProvider.self,
                           injected: GoogleBooksProvider(requestManager: self.requestManager)),
@@ -87,7 +94,10 @@ class ProductionInjectionPreset : CommonInjectionPreset {
             InjectionRule(injectable: RequestManagerConfiguration.self,
                           meta: GoogleRequestManagerConfiguration.self) {
                             return GoogleRequestManagerConfiguration()
-            }
+            },
+            InjectionRule(injectable: CoreDataContextProvider.self,
+                          meta: OldCoreDataContextProvider.self,
+                          injected: OldCoreDataContextProvider())
         ]
     }
 }
