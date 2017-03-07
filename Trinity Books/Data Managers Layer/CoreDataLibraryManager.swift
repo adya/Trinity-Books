@@ -115,12 +115,13 @@ private extension BookEntity {
                 let title = title,
                 let subtitle = subtitle,
                 let authorsData = self.authors,
-                let description = descr,
-                let coverUri = coverUri,
-                let thumbnailUri = thumbnailUri
+                let description = descr
+            
                 else {
                     return nil
             }
+            let coverUri = self.coverUri
+            let thumbnailUri = self.thumbnailUri
             let inLibrary = self.inLibrary
             let authors = NSKeyedUnarchiver.unarchiveObject(with: authorsData as Data) as! [String]
             

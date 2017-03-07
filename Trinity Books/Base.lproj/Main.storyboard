@@ -15,7 +15,7 @@
         <!--Books-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="BooksViewController" customModule="Trinity_Books" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="SearchBooksViewController" customModule="Trinity_Books" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -84,8 +84,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Books" image="books" id="cay-iU-9yr"/>
                     <connections>
-                        <outlet property="searchBar" destination="4d0-ap-BTX" id="3kR-WS-isY"/>
-                        <outlet property="tvBooks" destination="9uV-4e-YeX" id="oWE-ye-qwu"/>
+                        <outlet property="searchBar" destination="4d0-ap-BTX" id="TO2-T6-MED"/>
+                        <outlet property="tvBooks" destination="9uV-4e-YeX" id="F6q-u7-xMk"/>
                         <segue destination="gRk-TB-UH2" kind="presentation" identifier="segDetails" id="woL-gD-2JM"/>
                     </connections>
                 </viewController>
@@ -426,6 +426,6 @@
         <image name="logo" width="135" height="135"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KpY-Cs-QqI"/>
+        <segue reference="woL-gD-2JM"/>
     </inferredMetricsTieBreakers>
 </document>

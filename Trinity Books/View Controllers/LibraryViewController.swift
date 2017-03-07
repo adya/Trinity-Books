@@ -84,11 +84,12 @@ private extension LibraryViewController {
     
     func addBookViewModel(book: Book, at indexPath: IndexPath) {
         let index = bookIndex(at: indexPath)
+        let first = !hasBooks
         viewModel.books?.insert(try! Injector.inject(AnyBookViewModel.self, with: book, for: self), at: index)
-        if hasBooks {
-            tvBooks.insertRows(at: [indexPath], with: .automatic)
-        } else {
+        if first {
             tvBooks.reloadRows(at: [indexPath], with: .automatic)
+        } else {
+            tvBooks.insertRows(at: [indexPath], with: .automatic)
         }
     }
 }

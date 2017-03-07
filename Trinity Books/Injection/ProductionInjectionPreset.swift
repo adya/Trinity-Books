@@ -54,25 +54,26 @@ class ProductionInjectionPreset : CommonInjectionPreset {
         return try! Injector.inject(RequestManager.self)
     }
     
+    private var libraryManager: AnyLibraryManager {
+        return try! Injector.inject(AnyLibraryManager.self)
+    }
+
+    
     private var requestManagerConfiguration: RequestManagerConfiguration {
         return try! Injector.inject(RequestManagerConfiguration.self)
     }
     
-    private var contextProvider : CoreDataContextProvider {
-        return try! Injector.inject(CoreDataContextProvider.self)
-    }
+    
     
     var managers : [InjectionRule] {
         return [
-//            InjectionRule(injectable: AnyLibraryManager.self,
-//                          meta: UserDefaultsLibraryManager.self,
-//                          injected: UserDefaultsLibraryManager()),
             InjectionRule(injectable: AnyLibraryManager.self,
-                          meta: CoreDataLibraryManager.self,
-                          injected: CoreDataLibraryManager(contextProvider: self.contextProvider)),
+                          meta: UserDefaultsLibraryManager.self,
+                          injected: UserDefaultsLibraryManager()),
             InjectionRule(injectable: AnyBooksProvider.self,
                           meta: GoogleBooksProvider.self,
-                          injected: GoogleBooksProvider(requestManager: self.requestManager)),
+                          injected: GoogleBooksProvider(requestManager: self.requestManager,
+                                                        libraryManager: self.libraryManager)),
             InjectionRule(injectable: RequestManager.self,
                           meta: AlamofireRequestManager.self) {
                             return AlamofireRequestManager(configuration: self.requestManagerConfiguration)
@@ -94,10 +95,7 @@ class ProductionInjectionPreset : CommonInjectionPreset {
             InjectionRule(injectable: RequestManagerConfiguration.self,
                           meta: GoogleRequestManagerConfiguration.self) {
                             return GoogleRequestManagerConfiguration()
-            },
-            InjectionRule(injectable: CoreDataContextProvider.self,
-                          meta: OldCoreDataContextProvider.self,
-                          injected: OldCoreDataContextProvider())
+            }
         ]
     }
 }

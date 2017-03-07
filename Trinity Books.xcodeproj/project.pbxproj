@@ -53,6 +53,7 @@
 		00696C8F1E6C9EFA00028AE7 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */; };
 		00696C911E6CA61400028AE7 /* Pallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C901E6CA61400028AE7 /* Pallete.swift */; };
 		00696C931E6CA67100028AE7 /* TSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00696C921E6CA67100028AE7 /* TSExtensions.swift */; };
+		006C6FB71E6EF75600D93E57 /* CoreDataInjectionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006C6FB61E6EF75600D93E57 /* CoreDataInjectionPreset.swift */; };
 		007BA6521E6CB70500860D6B /* AnyBooksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007BA6511E6CB70500860D6B /* AnyBooksProvider.swift */; };
 		0086CD281E6AB20600BF054E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CD271E6AB20600BF054E /* AppDelegate.swift */; };
 		0086CD2F1E6AB20600BF054E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0086CD2D1E6AB20600BF054E /* Main.storyboard */; };
@@ -151,6 +152,7 @@
 		00696C8E1E6C9EFA00028AE7 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BookDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00696C901E6CA61400028AE7 /* Pallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pallete.swift; sourceTree = "<group>"; };
 		00696C921E6CA67100028AE7 /* TSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSExtensions.swift; sourceTree = "<group>"; };
+		006C6FB61E6EF75600D93E57 /* CoreDataInjectionPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataInjectionPreset.swift; sourceTree = "<group>"; };
 		0078EB38839E38EBE82D5E38 /* Pods_Trinity_BooksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trinity_BooksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		007BA6511E6CB70500860D6B /* AnyBooksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyBooksProvider.swift; sourceTree = "<group>"; };
 		0086CD241E6AB20600BF054E /* Trinity Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trinity Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +387,7 @@
 				00FAF3A01E6B60960032E0E9 /* CommonInjectionPreset.swift */,
 				00FAF3A81E6B64A50032E0E9 /* DummyInjectionPreset.swift */,
 				000A26291E6CE28C004D53F2 /* ProductionInjectionPreset.swift */,
+				006C6FB61E6EF75600D93E57 /* CoreDataInjectionPreset.swift */,
 			);
 			path = Injection;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				00696C931E6CA67100028AE7 /* TSExtensions.swift in Sources */,
 				000A26381E6DFA50004D53F2 /* UserDefaultsLibraryManager.swift in Sources */,
 				000A26701E6E8E3A004D53F2 /* GoogleRequestManagerConfiguration.swift in Sources */,
+				006C6FB71E6EF75600D93E57 /* CoreDataInjectionPreset.swift in Sources */,
 				00FAF3B81E6B665E0032E0E9 /* Injector.swift in Sources */,
 				000A266C1E6E0F0F004D53F2 /* GoogleBookResponseConverter.swift in Sources */,
 				000A26361E6DC877004D53F2 /* SplashViewController.swift in Sources */,

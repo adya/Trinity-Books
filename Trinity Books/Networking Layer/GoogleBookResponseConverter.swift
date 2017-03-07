@@ -3,7 +3,6 @@ class GoogleBooksResponseConverter: ResponseConverter<Book> {
         guard let id = dictionary[ItemKeys.id.rawValue] as? String,
         let volume = dictionary[ItemKeys.volume.rawValue] as? [String : AnyObject],
         let title = volume[VolumeKeys.title.rawValue] as? String,
-        let subtitle = volume[VolumeKeys.subtitle.rawValue] as? String,
         let description = volume[VolumeKeys.description.rawValue] as? String,
         let authors = volume[VolumeKeys.authors.rawValue] as? [String],
         let images = volume[VolumeKeys.images.rawValue] as? [String : String]
@@ -11,6 +10,7 @@ class GoogleBooksResponseConverter: ResponseConverter<Book> {
             return nil
         }
         
+        let subtitle = volume[VolumeKeys.subtitle.rawValue] as? String
         let cover = coverImage(from: images)
         let thumbnail = thumbnailImage(from: images)
         

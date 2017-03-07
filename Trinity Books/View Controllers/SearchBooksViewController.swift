@@ -95,7 +95,6 @@ private extension SearchBooksViewController {
     
     func reloadViewModel(with books: [Book]? = nil) {
         if let books = books {
-            print("[DEBUG]: reloadViewModel: new = \(books.count)")
             viewModel = try! Injector.inject(AnyBooksViewModel.self, with: books)
         } else {
             viewModel = try! Injector.inject(AnyBooksViewModel.self)
@@ -109,7 +108,6 @@ private extension SearchBooksViewController {
             viewModel.hasMore = false
             return
         }
-        print("[DEBUG]: addToViewModel: new = \(results.count)")
         let bookViewModels = results.map {try! Injector.inject(AnyBookViewModel.self, with: $0)}
         
         let start = tvBooks.numberOfRows(inSection: 0)
@@ -118,18 +116,11 @@ private extension SearchBooksViewController {
         let indexPaths = (start..<(start + results.count)).map {
             IndexPath(row: $0, section: 0)
         }
-        print("[DEBUG]: addToViewModel: startIndex = \(indexPaths.first!.row), lastIndex = \(indexPaths.last!.row)")
-        print("[DEBUG]: addToViewModel: totalIndicies = \(indexPaths.count)")
-        
-        print("[DEBUG]: addToViewModel: beginUpdates")
-        tvBooks.beginUpdates()
-        print("[DEBUG]: addToViewModel: appending viewModels (was \(viewModel.books!.count))")
         viewModel.books?.append(contentsOf: bookViewModels)
-        print("[DEBUG]: addToViewModel: appended (now \(viewModel.books!.count))")
-        print("[DEBUG]: addToViewModel: insertingRows")
+        
+        tvBooks.beginUpdates()
         tvBooks.insertRows(at: indexPaths, with: .automatic)
         tvBooks.endUpdates()
-        print("[DEBUG]: addToViewModel: endUpdates")
     }
 }
 
@@ -217,14 +208,11 @@ private extension SearchBooksViewController {
         }
         var row = top ? 0 : (tvBooks.numberOfRows(inSection: 0) - 1)
         viewModel.isLoading = true
-        print("[DEBUG]: showLoading: lastRow = \(row)")
         searchBar.isUserInteractionEnabled = !viewModel.isLoading
         if hasBooks {
             row = top ? row : (row + 1)
-            print("[DEBUG]: showLoading: inserting = \(row)")
             tvBooks.insertRows(at: [IndexPath(row: row, section: 0)], with: top ? .top : .none)
         } else {
-            print("[DEBUG]: showLoading: reloading = \(row)")
             tvBooks.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
         }
     }
@@ -234,15 +222,12 @@ private extension SearchBooksViewController {
             return
         }
         let row = top ? 0 : (tvBooks.numberOfRows(inSection: 0) - 1) // index of the loading cell
-        print("[DEBUG]: hideLoading: lastRow = \(row)")
         viewModel.isLoading = false
         searchBar.isUserInteractionEnabled = !viewModel.isLoading
         let indexPath = [IndexPath(row: row, section: 0)]
         if hasBooks {
-            print("[DEBUG]: hideLoading: deleting = \(row)")
             tvBooks.deleteRows(at: indexPath, with: top ? .top : .none)
         } else {
-            print("[DEBUG]: hideLoading: reloading = \(row)")
             tvBooks.reloadRows(at: indexPath, with: .fade)
         }
     }
@@ -305,16 +290,12 @@ extension SearchBooksViewController : UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let number = hasBooks ? viewModel.books!.count + (viewModel.isLoading ? 1 : 0) : 1 // empty cell
-        print("[DEBUG]: numberOfRows: \(number)")
-        return number
+        return hasBooks ? viewModel.books!.count + (viewModel.isLoading ? 1 : 0) : 1 // empty cell
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let height = hasBooks ? (isBookCellIndex(at: indexPath) ? BookCell.height : LoadingCell.height) : MessageCell.height
-        print("[DEBUG]: estimatedHeightForRowAt: \(indexPath.row) - \(height)")
-        return height
+        return hasBooks ? (isBookCellIndex(at: indexPath) ? BookCell.height : LoadingCell.height) : MessageCell.height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -322,7 +303,6 @@ extension SearchBooksViewController : UITableViewDataSource, UITableViewDelegate
             let cell = tableView.dequeueReusableCell(of: LoadingCell.self)
             let message = isTopLoadingCellIndex(at: indexPath) ? viewModel.loadingMessage : viewModel.loadingMoreMessage
             cell.configure(with: message)
-            print("[DEBUG]: cellForRowAt: \(indexPath.row) - Loading Cell: \(message)")
             return cell
         } else if hasBooks {
             let index = bookIndex(at: indexPath)
@@ -330,13 +310,11 @@ extension SearchBooksViewController : UITableViewDataSource, UITableViewDelegate
             let cell = tableView.dequeueReusableCell(of: BookCell.self)
             if let bookViewModel = viewModel.books?[index] {
                 cell.configure(with: bookViewModel)
-                print("[DEBUG]: cellForRowAt: \(indexPath.row) - Book Cell: \(bookViewModel.title)")
             }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(of: MessageCell.self)
             cell.configure(with: viewModel.emptyMessage)
-            print("[DEBUG]: cellForRowAt: \(indexPath.row) - Message Cell: \(viewModel.emptyMessage.message)")
             return cell
         }
     }
@@ -384,7 +362,6 @@ extension SearchBooksViewController : UITableViewDataSource, UITableViewDelegate
             else {
                 return
         }
-        print("[DEBUG]: willDisplay: \(indexPath.row) - Loading more")
         loadMore()
     }
 }

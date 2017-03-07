@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         Injector.configure(with: DummyInjectionPreset())
         Injector.configure(with: ProductionInjectionPreset())
+        Injector.configure(with: CoreDataInjectionPreset())        
         Injector.printConfiguration()
     }
 

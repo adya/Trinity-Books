@@ -1,12 +1,13 @@
 class GoogleBooksProvider : AnyBooksProvider {
     
     private let requestManager : RequestManager
-    
+    private let libraryManager : AnyLibraryManager
+
     private var searchPointer: SearchPointer!
     
-    
-    init(requestManager: RequestManager) {
+    init(requestManager: RequestManager, libraryManager: AnyLibraryManager) {
         self.requestManager = requestManager
+        self.libraryManager = libraryManager
     }
     
     func performBookSearch(term: String, callback: @escaping (OperationResult<[Book]>) -> Void) {
@@ -39,7 +40,13 @@ class GoogleBooksProvider : AnyBooksProvider {
                 self.searchPointer = SearchPointer(term: searchPointer.term,
                                                    total: UInt(portion.total),
                                                    page: searchPointer.page + 1)
-                callback(.success(portion.books))
+                // check books in library.
+                let books : [Book] = portion.books.map {
+                    var book = $0
+                    book.inLibrary = self.libraryManager.library?.books.contains(book) ?? false
+                    return book
+                }
+                callback(.success(books))
             case .failure:
                 callback(.failure(.invalidResponse))
             }
