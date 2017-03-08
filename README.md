@@ -1,10 +1,7 @@
 # Trinity-Books
 
 Example project based on MVVM pattern and DI principle.
-
-### Demo:
-   ![Demo](https://psv4.userapi.com/c810438/u77497108/docs/8451dc708eca/books.gif?extra=t-JzU4P2WtDmtvUgLs8zGzvZXjgkBdaCW3Hk0rZ6MD1wKoNFZTL7l7T3RFaqM5u6aABNrxldyR66Btero5H6uP8d6TChP2-YOuQq-AVoMAMFjmhGegDM_Q) 
-   
+  
 ### UI Features:
 * Pagination.
 * Swipe on cells.
